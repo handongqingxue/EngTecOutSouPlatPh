@@ -1,0 +1,5 @@
+<!--pages/proOutSou/proOutSou.wxml-->
+<view class="main_v">
+  <view class="title_v">提供外包</view>
+  <view class="back_but_v" catchtap="goHomePage">{{backButSign}}</view>
+</view>

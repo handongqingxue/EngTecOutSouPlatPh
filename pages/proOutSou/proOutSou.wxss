@@ -1,0 +1,19 @@
+/* pages/proOutSou/proOutSou.wxss */
+.main_v{
+  width: 100%;
+}
+.main_v .title_v{
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #F8F8F8;
+}
+.main_v .back_but_v{
+  height: 40px;
+  line-height: 40px;
+  margin-top: -40px;
+  margin-left: 10px;
+}

@@ -1,0 +1,61 @@
+<!--pages/needOutSou/needOutSou.wxml-->
+<view class="main_v">
+  <view class="title_v">需要外包</view>
+  <view class="back_but_v" catchtap="goHomePage">{{backButSign}}</view>
+  <view class="thanks_tit_v">您好，感谢您使用工程外包平台</view>
+  <view class="thanks_cont_v">如果您想成为代理商，请您填写以下内容。我们将会在1-3个工作日内联系您。</view>
+  <view class="contactName_v">
+    <view class="tit_v">01  请问如何称呼您？</view>
+    <view class="inp_v">
+      <input type="text" placeholder="请填写您的姓名，方便我们更好的与您沟通"/>
+    </view>
+  </view>
+  <view class="phone_v">
+    <view class="tit_v">02  您的联系方式</view>
+    <view class="inp_v">
+      <input type="text" placeholder="仅用于我们工作人员联系您，请放心填写"/>
+    </view>
+  </view>
+  <view class="area_v">
+    <view class="tit_v">03  您所在的地区</view>
+    <view class="inp_v">
+      <input type="text" placeholder="请填写省/市/区"/>
+    </view>
+  </view>
+  <view class="enginName_v">
+    <view class="tit_v">04  您所实施的工程名</view>
+    <view class="inp_v">
+      <input type="text" placeholder="请填写工程名"/>
+    </view>
+  </view>
+  <view class="needCount_v">
+    <view class="tit_v">05  您的工程所需人数</view>
+    <view class="inp_v">
+      <input type="text" placeholder="请填写工程所需人数"/>
+    </view>
+  </view>
+  <view class="otherTrade_v">
+    <view class="tit_v">07  其他行业</view>
+    <view class="inp_v">
+      <input type="text" placeholder="请填写其他行业"/>
+    </view>
+  </view>
+  <view class="otherSpeciality_v">
+    <view class="tit_v">09  其他特长</view>
+    <view class="inp_v">
+      <input type="text" placeholder="请填写其他特长"/>
+    </view>
+  </view>
+  <view class="describe_v">
+    <view class="tit_v">10  描述</view>
+    <view class="ta_v">
+      <textarea placeholder="请填写描述"></textarea>
+    </view>
+  </view>
+  <view class="otherSpeciality_v">
+    <view class="tit_v">11  开始日期</view>
+    <view class="picker_v">
+      <picker class="jhysrq_picker" mode="date" bindcancel="pickerJhysrqCancel" bindchange="pickerJhysrqChange">{{jhysrq==''?jhysrqPlaceholder:jhysrq}}</picker>
+    </view>
+  </view>
+</view>
