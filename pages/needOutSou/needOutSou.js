@@ -8,12 +8,17 @@ Page({
    */
   data: {
     backButSign:'<',
+    startDate:'',
+    endDate:'',
+    startDatePlaceholder:'请选择开始日期',
+    endDatePlaceholder:'请选择结束日期',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    needOutSouPage=this;
 
   },
 
@@ -64,6 +69,22 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+  pickerStartDateChange:function(e){
+    let value = e.detail.value;
+    console.log(value)
+    needOutSouPage.setData({startDate:value});
+  },
+  pickerStartDateCancel:function(){
+    needOutSouPage.setData({startDate:''});
+  },
+  pickerEndDateChange:function(e){
+    let value = e.detail.value;
+    console.log(value)
+    needOutSouPage.setData({endDate:value});
+  },
+  pickerEndDateCancel:function(){
+    needOutSouPage.setData({endDate:''});
   },
   goHomePage:function(){
     wx.redirectTo({

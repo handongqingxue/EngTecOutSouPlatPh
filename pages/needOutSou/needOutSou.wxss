@@ -52,6 +52,14 @@
   background-color: #FFF;
   padding-top: 1px;
 }
+.main_v .startDate_v,
+.main_v .endDate_v{
+  width: 100%;
+  height: 90px;
+  margin:10px auto;
+  background-color: #FFF;
+  padding-top: 1px;
+}
 .main_v .contactName_v .tit_v,
 .main_v .phone_v .tit_v,
 .main_v .area_v .tit_v,
@@ -59,7 +67,9 @@
 .main_v .needCount_v .tit_v,
 .main_v .otherTrade_v .tit_v,
 .main_v .otherSpeciality_v .tit_v,
-.main_v .describe_v .tit_v{
+.main_v .describe_v .tit_v,
+.main_v .startDate_v .tit_v,
+.main_v .endDate_v .tit_v{
   width: 90%;
   margin:10px auto 0;
 }
@@ -69,7 +79,9 @@
 .main_v .enginName_v .inp_v,
 .main_v .needCount_v .inp_v,
 .main_v .otherTrade_v .inp_v,
-.main_v .otherSpeciality_v .inp_v{
+.main_v .otherSpeciality_v .inp_v,
+.main_v .startDate_v .picker_v,
+.main_v .endDate_v .picker_v{
   width: 90%;
   margin:10px auto 0;
 }
@@ -96,11 +108,12 @@
   padding: 5px 10px 0 10px;
   background-color: #eee;
 }
-.main_v .otherSpeciality_v .picker_v picker{
-  width:150px;
-  height:30px;
-  line-height:30px; 
-  margin-top:-35px;
-  margin-left:120px;
-  background-color:#00f;
+.main_v .startDate_v .picker_v picker,
+.main_v .endDate_v .picker_v picker{
+  width: 90%;
+  height: 25px;
+  color: #80809d;
+  font-size: 12px;
+  padding: 10px 10px 0 10px;
+  background-color: #eee;
 }

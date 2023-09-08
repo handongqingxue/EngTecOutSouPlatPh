@@ -52,10 +52,16 @@
       <textarea placeholder="请填写描述"></textarea>
     </view>
   </view>
-  <view class="otherSpeciality_v">
+  <view class="startDate_v">
     <view class="tit_v">11  开始日期</view>
     <view class="picker_v">
-      <picker class="jhysrq_picker" mode="date" bindcancel="pickerJhysrqCancel" bindchange="pickerJhysrqChange">{{jhysrq==''?jhysrqPlaceholder:jhysrq}}</picker>
+      <picker mode="date" bindcancel="pickerStartDateCancel" bindchange="pickerStartDateChange">{{startDate==''?startDatePlaceholder:startDate}}</picker>
+    </view>
+  </view>
+  <view class="endDate_v">
+    <view class="tit_v">12  结束日期</view>
+    <view class="picker_v">
+      <picker mode="date" bindcancel="pickerEndDateCancel" bindchange="pickerEndDateChange">{{endDate==''?endDatePlaceholder:endDate}}</picker>
     </view>
   </view>
 </view>
