@@ -1,4 +1,6 @@
 // app.js
+var rootIP = "http://localhost:8080/EngTecOutSouPlat/phone/";
+
 App({
   onLaunch() {
     // 展示本地存储能力
@@ -15,5 +17,8 @@ App({
   },
   globalData: {
     userInfo: null
-  }
+  },
+  getRootIP:function(){
+    return rootIP;
+  },
 })

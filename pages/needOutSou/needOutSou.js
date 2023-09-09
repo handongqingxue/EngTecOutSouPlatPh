@@ -10,6 +10,7 @@ Page({
     backButSign:'<',
     startDate:'',
     endDate:'',
+    describePlaceholder:'请填写描述',
     startDatePlaceholder:'请选择开始日期',
     endDatePlaceholder:'请选择结束日期',
     showSubmitBut:true,
@@ -22,7 +23,7 @@ Page({
    */
   onLoad(options) {
     needOutSouPage=this;
-
+    rootIP=getApp().getRootIP();
   },
 
   /**
@@ -80,16 +81,14 @@ Page({
           if(needOutSouPage.checkEnginName()){
             if(needOutSouPage.checkNeedCount()){
               if(needOutSouPage.checkOtherTrade()){
-                if(newPage.checkOtherSpeciality()){
-                  /*
-                  if(newPage.checkSHDWId()){
-                    if(newPage.checkCYCLId()){
-                      if(newPage.checkCYSJId()){
-                        newPage.newDingDan();
+                if(needOutSouPage.checkOtherSpeciality()){
+                  if(needOutSouPage.checkDescribe()){
+                    if(needOutSouPage.checkStartDate()){
+                      if(needOutSouPage.checkEndDate()){
+                        needOutSouPage.newNeedOutSou();
                       }
                     }
                   }
-                  */
                 }
               }
             }
@@ -97,6 +96,57 @@ Page({
         }
       }
     }
+  },
+  newNeedOutSou:function(){
+    needOutSouPage.saving(true);
+    let contactName=needOutSouPage.data.contactName;
+    let phone=needOutSouPage.data.phone;
+    let area=needOutSouPage.data.area;
+    let enginName=needOutSouPage.data.enginName;
+    let needCount=needOutSouPage.data.needCount;
+    let otherTrade=needOutSouPage.data.otherTrade;
+    let otherSpeciality=needOutSouPage.data.otherSpeciality;
+    let describe=needOutSouPage.data.describe;
+    let startDate=needOutSouPage.data.startDate;
+    let endDate=needOutSouPage.data.endDate;
+    console.log("contactName==="+contactName)
+    console.log("phone==="+phone)
+    console.log("area==="+area)
+    console.log("enginName==="+enginName)
+    console.log("needCount==="+needCount)
+    console.log("otherTrade==="+otherTrade)
+    console.log("otherSpeciality==="+otherSpeciality)
+    console.log("describe==="+describe)
+    console.log("startDate==="+startDate)
+    console.log("endDate==="+endDate)
+    //return false;
+    wx.request({
+      url: rootIP+"submitNeedOutSou",
+      data:{contactName:contactName,phone:phone,area:area,enginName:enginName,needCount:needCount,otherTrade:otherTrade,otherSpeciality:otherSpeciality,describe:describe,startDate:startDate,endDate:endDate},
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      success: function (res) {
+        let data=res.data;
+        let message=data.message;
+        console.log("message==="+message)
+        if(message=="ok"){
+          needOutSouPage.saving(false);
+          wx.showToast({
+            title: data.info,
+          })
+          setTimeout(() => {
+            //needOutSouPage.goListPage();
+          }, 1000);
+        }
+        else{
+          wx.showToast({
+            title: data.info,
+          })
+        }
+      }
+    })
   },
   getInputValue:function(e){
     if(e.currentTarget.id=="contactName_inp"){
@@ -117,7 +167,7 @@ Page({
     }
     else if(e.currentTarget.id=="needCount_inp"){
       let needCount=e.detail.value;
-      newPage.setData({needCount:needCount});
+      needOutSouPage.setData({needCount:needCount});
     }
     else if(e.currentTarget.id=="otherTrade_inp"){
       let otherTrade=e.detail.value;
@@ -127,13 +177,9 @@ Page({
       let otherSpeciality=e.detail.value;
       needOutSouPage.setData({otherSpeciality:otherSpeciality});
     }
-    else if(e.currentTarget.id=="dfgbpz_inp"){
-      let dfgbpz=e.detail.value;
-      newPage.setData({dfgbpz:dfgbpz});
-    }
-    else if(e.currentTarget.id=="dfgbmz_inp"){
-      let dfgbmz=e.detail.value;
-      newPage.setData({dfgbmz:dfgbmz});
+    else if(e.currentTarget.id=="describe_inp"){
+      let describe=e.detail.value;
+      needOutSouPage.setData({describe:describe});
     }
   },
   focusContactName:function(){
@@ -250,6 +296,47 @@ Page({
       return true;
     }
   },
+  focusDescribe:function(){
+    let describe=needOutSouPage.data.describe;
+    if(describe=="描述不能为空"){
+      needOutSouPage.setData({describePlaceholder:'请填写描述'});
+      needOutSouPage.setData({describe:''});
+    }
+  },
+  checkDescribe:function(){
+    let describe=needOutSouPage.data.describe;
+    console.log(describe)
+    if(describe==""||describe==null||describe=="描述不能为空"){
+      needOutSouPage.setData({describePlaceholder:''});
+      needOutSouPage.setData({describe:'描述不能为空'});
+      return false;
+    }
+    else{
+      return true;
+    }
+  },
+  checkStartDate:function(){
+    let startDate=needOutSouPage.data.startDate;
+    if(startDate==null||startDate==""){
+        wx.showToast({
+          title: "请选择开始日期",
+        })
+        return false;
+    }
+    else
+      return true;
+  },
+  checkEndDate:function(){
+    let endDate=needOutSouPage.data.endDate;
+    if(endDate==null||endDate==""){
+        wx.showToast({
+          title: "请选择结束日期",
+        })
+        return false;
+    }
+    else
+      return true;
+  },
   pickerStartDateChange:function(e){
     let value = e.detail.value;
     console.log(value)
@@ -265,6 +352,14 @@ Page({
   },
   pickerEndDateCancel:function(){
     needOutSouPage.setData({endDate:''});
+  },
+  saving:function(flag){
+    if(flag){
+      needOutSouPage.setData({showSubmitBut:false,showSubmitingBut:true});
+    }
+    else{
+      needOutSouPage.setData({showSubmitingBut:false,showSubmitedBut:true});
+    }
   },
   goHomePage:function(){
     wx.redirectTo({

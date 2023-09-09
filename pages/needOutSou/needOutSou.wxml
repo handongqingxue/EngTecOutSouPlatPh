@@ -49,7 +49,7 @@
   <view class="describe_v">
     <view class="tit_v">10  描述</view>
     <view class="ta_v">
-      <textarea placeholder="请填写描述"></textarea>
+      <textarea id="describe_inp" placeholder="{{describePlaceholder}}" bindfocus="focusDescribe" bindblur="checkDescribe" bindinput="getInputValue">{{describe}}</textarea>
     </view>
   </view>
   <view class="startDate_v">

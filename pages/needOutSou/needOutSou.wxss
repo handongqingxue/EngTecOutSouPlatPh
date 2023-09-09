@@ -117,7 +117,9 @@
   padding: 10px 10px 0 10px;
   background-color: #eee;
 }
-.main_v .submit_but_v{
+.main_v .submit_but_v,
+.main_v .submiting_but_v,
+.main_v .submited_but_v{
   width: 80%;
   height: 30px;
   line-height: 30px;
