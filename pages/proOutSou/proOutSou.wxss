@@ -17,3 +17,110 @@
   margin-top: -40px;
   margin-left: 10px;
 }
+.main_v .thanks_tit_v{
+  width: 90%;
+  height: 30px;
+  line-height: 30px;
+  margin: auto;
+  font-weight: bold;
+}
+.main_v .thanks_cont_v{
+  width: 90%;
+  height: 40px;
+  line-height: 20px;
+  margin: auto;
+  font-size: 13px;
+}
+.main_v .contactName_v,
+.main_v .phone_v,
+.main_v .area_v,
+.main_v .proCount_v,
+.main_v .otherTrade_v,
+.main_v .otherSpeciality_v{
+  width: 100%;
+  height: 85px;
+  margin:10px auto;
+  background-color: #FFF;
+  padding-top: 1px;
+}
+.main_v .describe_v{
+  width: 100%;
+  height: 165px;
+  margin:10px auto;
+  background-color: #FFF;
+  padding-top: 1px;
+}
+.main_v .startDate_v,
+.main_v .endDate_v{
+  width: 100%;
+  height: 90px;
+  margin:10px auto;
+  background-color: #FFF;
+  padding-top: 1px;
+}
+.main_v .contactName_v .tit_v,
+.main_v .phone_v .tit_v,
+.main_v .area_v .tit_v,
+.main_v .proCount_v .tit_v,
+.main_v .otherTrade_v .tit_v,
+.main_v .otherSpeciality_v .tit_v,
+.main_v .describe_v .tit_v,
+.main_v .startDate_v .tit_v,
+.main_v .endDate_v .tit_v{
+  width: 90%;
+  margin:10px auto 0;
+}
+.main_v .contactName_v .inp_v,
+.main_v .phone_v .inp_v,
+.main_v .area_v .inp_v,
+.main_v .proCount_v .inp_v,
+.main_v .otherTrade_v .inp_v,
+.main_v .otherSpeciality_v .inp_v,
+.main_v .startDate_v .picker_v,
+.main_v .endDate_v .picker_v{
+  width: 90%;
+  margin:10px auto 0;
+}
+.main_v .describe_v .ta_v{
+  width: 90%;
+  margin:10px auto 0;
+}
+.main_v .contactName_v .inp_v input,
+.main_v .phone_v .inp_v input,
+.main_v .area_v .inp_v input,
+.main_v .proCount_v .inp_v input,
+.main_v .otherTrade_v .inp_v input,
+.main_v .otherSpeciality_v .inp_v input{
+  width: 90%;
+  height: 30px;
+  font-size: 12px;
+  padding: 0 10px 0 10px;
+  background-color: #eee;
+}
+.main_v .describe_v .ta_v textarea{
+  width: 90%;
+  height: 100px;
+  padding: 5px 10px 0 10px;
+  background-color: #eee;
+}
+.main_v .startDate_v .picker_v picker,
+.main_v .endDate_v .picker_v picker{
+  width: 90%;
+  height: 25px;
+  color: #80809d;
+  font-size: 12px;
+  padding: 10px 10px 0 10px;
+  background-color: #eee;
+}
+.main_v .submit_but_v,
+.main_v .submiting_but_v,
+.main_v .submited_but_v{
+  width: 80%;
+  height: 30px;
+  line-height: 30px;
+  margin: 20px auto;
+  color: #FFF;
+  text-align: center;
+  background-color: #ff9205;
+  border-radius:3px;
+}
