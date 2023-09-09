@@ -23,7 +23,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-
+    home.getUserInfo();
   },
 
   /**
@@ -66,6 +66,22 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+  getUserInfo: function(e) { 
+    //https://pythonjishu.com/wirvsmuzfagvzej/
+    //https://www.zhihu.com/question/272220287/answer/2825656622
+    wx.login({ 
+      success: function(res) { 
+        if (res.code) { // 发送 res.code 到后台换取 openId, sessionKey, unionId 
+          wx.getUserInfo({ 
+            withCredentials: true, 
+            success: function(res) { 
+              console.log(res.userInfo) 
+            } 
+          }) 
+        } 
+      } 
+    }) 
   },
   goPage:function(e){
     let pageFlag=e.currentTarget.dataset.pageflag;
