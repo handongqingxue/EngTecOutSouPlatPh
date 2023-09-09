@@ -7,43 +7,43 @@
   <view class="contactName_v">
     <view class="tit_v">01  请问如何称呼您？</view>
     <view class="inp_v">
-      <input type="text" placeholder="请填写您的姓名，方便我们更好的与您沟通"/>
+      <input id="contactName_inp" type="text" placeholder="请填写您的姓名，方便我们更好的与您沟通" value="{{contactName}}" bindfocus="focusContactName" bindblur="checkContactName" bindinput="getInputValue"/>
     </view>
   </view>
   <view class="phone_v">
     <view class="tit_v">02  您的联系方式</view>
     <view class="inp_v">
-      <input type="text" placeholder="仅用于我们工作人员联系您，请放心填写"/>
+      <input id="phone_inp" type="text" placeholder="仅用于我们工作人员联系您，请放心填写" value="{{phone}}" bindfocus="focusPhone" bindblur="checkPhone" bindinput="getInputValue"/>
     </view>
   </view>
   <view class="area_v">
     <view class="tit_v">03  您所在的地区</view>
     <view class="inp_v">
-      <input type="text" placeholder="请填写省/市/区"/>
+      <input id="area_inp" type="text" placeholder="请填写省/市/区" value="{{area}}" bindfocus="focusArea" bindblur="checkArea" bindinput="getInputValue"/>
     </view>
   </view>
   <view class="enginName_v">
     <view class="tit_v">04  您所实施的工程名</view>
     <view class="inp_v">
-      <input type="text" placeholder="请填写工程名"/>
+      <input id="enginName_inp" type="text" placeholder="请填写工程名" value="{{enginName}}" bindfocus="focusEnginName" bindblur="checkEnginName" bindinput="getInputValue"/>
     </view>
   </view>
   <view class="needCount_v">
     <view class="tit_v">05  您的工程所需人数</view>
     <view class="inp_v">
-      <input type="text" placeholder="请填写工程所需人数"/>
+      <input id="needCount_inp" type="number" placeholder="请填写工程所需人数" value="{{needCount}}" bindinput="getInputValue"/>
     </view>
   </view>
   <view class="otherTrade_v">
     <view class="tit_v">07  其他行业</view>
     <view class="inp_v">
-      <input type="text" placeholder="请填写其他行业"/>
+      <input id="otherTrade_inp" type="text" placeholder="请填写其他行业" value="{{otherTrade}}" bindfocus="focusOtherTrade" bindblur="checkOtherTrade" bindinput="getInputValue"/>
     </view>
   </view>
   <view class="otherSpeciality_v">
     <view class="tit_v">09  其他特长</view>
     <view class="inp_v">
-      <input type="text" placeholder="请填写其他特长"/>
+      <input id="otherSpeciality_inp" type="text" placeholder="请填写其他特长" value="{{otherSpeciality}}" bindfocus="focusOtherSpeciality" bindblur="checkOtherSpeciality" bindinput="getInputValue"/>
     </view>
   </view>
   <view class="describe_v">
@@ -64,4 +64,7 @@
       <picker mode="date" bindcancel="pickerEndDateCancel" bindchange="pickerEndDateChange">{{endDate==''?endDatePlaceholder:endDate}}</picker>
     </view>
   </view>
+  <view class="submit_but_v" data-flag="{{true}}" catchtap="checkNew" wx:if="{{showSubmitBut}}">提交</view>
+  <view class="submiting_but_v" wx:if="{{showSubmitingBut}}">提交中...</view>
+  <view class="submited_but_v" wx:if="{{showSubmitedBut}}">已提交</view>
 </view>
