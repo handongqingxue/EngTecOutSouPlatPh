@@ -4,7 +4,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/needOutSou/needOutSou",
-    "pages/proOutSou/proOutSou"
+    "pages/proOutSou/proOutSou",
+    "pages/subSuc/subSuc"
   ],
   "window": {
     "backgroundTextStyle": "light",

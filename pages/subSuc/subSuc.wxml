@@ -1,0 +1,8 @@
+<!--pages/subSuc/submit.wxml-->
+<view class="main_v">
+  <view class="suc_img_v">
+      <image class="suc_img" src="/images/005.png"/>
+  </view>
+  <view class="suc_text_v">提交成功</view>
+  <view class="back_home_but_v" catchtap="goHomePage">返回首页</view>
+</view>

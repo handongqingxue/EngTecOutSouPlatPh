@@ -133,7 +133,7 @@ Page({
             title: data.info,
           })
           setTimeout(() => {
-            //proOutSouPage.goListPage();
+            proOutSouPage.goSubSucPage();
           }, 1000);
         }
         else{
@@ -335,6 +335,11 @@ Page({
     else{
       proOutSouPage.setData({showSubmitingBut:false,showSubmitedBut:true});
     }
+  },
+  goSubSucPage:function(){
+    wx.redirectTo({
+      url: '/pages/subSuc/subSuc',
+    })
   },
   goHomePage:function(){
     wx.redirectTo({
