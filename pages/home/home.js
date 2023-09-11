@@ -9,6 +9,7 @@ Page({
   data: {
     nos:1,
     pos:2,
+    comLogin:3,
   },
 
   /**
@@ -126,6 +127,8 @@ Page({
         let data=res.data;
         let message=data.message;
         console.log("message==="+message)
+        var wxUser={openId:openId,nickName:nickName,avatarUrl:avatarUrl};
+        wx.setStorageSync("wxUser",wxUser);
       }
     })
   },
@@ -139,6 +142,9 @@ Page({
         break;
       case home.data.pos:
         url+='proOutSou/proOutSou';
+        break;
+      case home.data.comLogin:
+        url+='comLogin/comLogin';
         break;
       }
       wx.redirectTo({

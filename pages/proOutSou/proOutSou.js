@@ -1,6 +1,7 @@
 // pages/proOutSou/proOutSou.js
 var proOutSouPage;
 var rootIP;
+var wxUser;
 Page({
 
   /**
@@ -30,7 +31,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-
+    wxUser=wx.getStorageSync("wxUser");
   },
 
   /**
@@ -100,6 +101,7 @@ Page({
     let contactName=proOutSouPage.data.contactName;
     let phone=proOutSouPage.data.phone;
     let area=proOutSouPage.data.area;
+    let openId=wxUser.openId;
     let proCount=proOutSouPage.data.proCount;
     let otherTrade=proOutSouPage.data.otherTrade;
     let otherSpeciality=proOutSouPage.data.otherSpeciality;
@@ -109,6 +111,7 @@ Page({
     console.log("contactName==="+contactName)
     console.log("phone==="+phone)
     console.log("area==="+area)
+    console.log("openId==="+openId)
     console.log("proCount==="+proCount)
     console.log("otherTrade==="+otherTrade)
     console.log("otherSpeciality==="+otherSpeciality)
@@ -118,7 +121,7 @@ Page({
     //return false;
     wx.request({
       url: rootIP+"submitProOutSou",
-      data:{contactName:contactName,phone:phone,area:area,proCount:proCount,otherTrade:otherTrade,otherSpeciality:otherSpeciality,describe:describe,startDate:startDate,endDate:endDate},
+      data:{contactName:contactName,phone:phone,area:area,openId:openId,proCount:proCount,otherTrade:otherTrade,otherSpeciality:otherSpeciality,describe:describe,startDate:startDate,endDate:endDate},
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded',

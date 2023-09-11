@@ -1,6 +1,7 @@
 // pages/needOutSou/needOutSou.js
 var needOutSouPage;
 var rootIP;
+var wxUser;
 Page({
 
   /**
@@ -30,7 +31,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-
+    wxUser=wx.getStorageSync("wxUser");
   },
 
   /**
@@ -102,6 +103,7 @@ Page({
     let contactName=needOutSouPage.data.contactName;
     let phone=needOutSouPage.data.phone;
     let area=needOutSouPage.data.area;
+    let openId=wxUser.openId;
     let enginName=needOutSouPage.data.enginName;
     let needCount=needOutSouPage.data.needCount;
     let otherTrade=needOutSouPage.data.otherTrade;
@@ -112,6 +114,7 @@ Page({
     console.log("contactName==="+contactName)
     console.log("phone==="+phone)
     console.log("area==="+area)
+    console.log("openId==="+openId)
     console.log("enginName==="+enginName)
     console.log("needCount==="+needCount)
     console.log("otherTrade==="+otherTrade)
@@ -122,7 +125,7 @@ Page({
     //return false;
     wx.request({
       url: rootIP+"submitNeedOutSou",
-      data:{contactName:contactName,phone:phone,area:area,enginName:enginName,needCount:needCount,otherTrade:otherTrade,otherSpeciality:otherSpeciality,describe:describe,startDate:startDate,endDate:endDate},
+      data:{contactName:contactName,phone:phone,area:area,openId:openId,enginName:enginName,needCount:needCount,otherTrade:otherTrade,otherSpeciality:otherSpeciality,describe:describe,startDate:startDate,endDate:endDate},
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded',

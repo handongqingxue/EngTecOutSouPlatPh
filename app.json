@@ -5,7 +5,8 @@
     "pages/needOutSou/needOutSou",
     "pages/proOutSou/proOutSou",
     "pages/subSuc/subSuc",
-    "pages/index/index"
+    "pages/index/index",
+    "pages/comLogin/comLogin"
   ],
   "window": {
     "backgroundTextStyle": "light",

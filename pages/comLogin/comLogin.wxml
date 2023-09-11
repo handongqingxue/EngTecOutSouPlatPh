@@ -1,0 +1,13 @@
+<!--pages/comLogin/comLogin.wxml-->
+<view class="main_v">
+  <view class="title_v">公司登录</view>
+  <view class="back_but_v" catchtap="goHomePage">{{backButSign}}</view>
+  <view class="add_v" wx:if="{{showAddV}}">
+    <view class="name_v">
+      <view class="tit_v">公司名</view>
+      <view class="inp_v">
+        <input id="add_v_name_inp" type="text" placeholder="请填写公司名" value="{{addVName}}" bindfocus="focusAddVName" bindblur="checkAddVName" bindinput="getInputValue"/>
+      </view>
+    </view>
+  </view>
+</view>

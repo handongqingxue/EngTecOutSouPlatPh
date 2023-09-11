@@ -14,7 +14,7 @@
         <text class="but_text">提供外包</text>
       </view>
     </view>
-    <view class="but_v cl_but_v" data-pageflag="{{item.id}}" catchtap="goPage">
+    <view class="but_v cl_but_v" data-pageflag="{{comLogin}}" catchtap="goPage">
       <image class="but_img" src="/images/004.png"/>
       <view>
         <text class="but_text">公司登录</text>
