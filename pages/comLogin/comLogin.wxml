@@ -9,5 +9,15 @@
         <input id="add_v_name_inp" type="text" placeholder="请填写公司名" value="{{addVName}}" bindfocus="focusAddVName" bindblur="checkAddVName" bindinput="getInputValue"/>
       </view>
     </view>
+    <view class="trade_v">
+      <view class="tit_v">行业</view>
+      <view class="select_v">
+        <view class='selected_text_v' catchtap='showTradeOption'>{{tradeList[tradeSelectIndex]==null?'请选择':tradeList[tradeSelectIndex].text}}</view>
+          <image class='select_img {{showTradeOption&&"select_img_rotate"}}' src='../../images/sanjiao.png'></image>
+      </view>
+      <view class='trade_option_list_v' style='height:{{showTradeOption?(tradeList.length>5?300:tradeList.length*30):0}}px;'>
+        <view class='item_v' wx:for="{{tradeList}}" data-index="{{index}}" catchtap='selectTradeOption'>{{item.text}}</view>
+      </view>
+    </view>
   </view>
 </view>

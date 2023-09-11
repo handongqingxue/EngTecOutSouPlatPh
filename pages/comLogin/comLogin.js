@@ -9,6 +9,18 @@ Page({
    */
   data: {
     backButSign:'<',
+    showTradeOption:false,
+    tradeList:[
+      {value:"",text:"请选择"},
+      {value:"1",text:"工业自动化系统集成"},
+      {value:"2",text:"环保工程"},
+      {value:"3",text:"设备制造"},
+      {value:"4",text:"监控安装"},
+      {value:"5",text:"工业软件"},
+      {value:"6",text:"化工行业"},
+      {value:"7",text:"电厂锅炉"},
+      {value:"8",text:"新能源新材料"}
+    ],
     showAddV:false,
 
   },
@@ -94,6 +106,24 @@ Page({
       }
     })
   },
+  // 点击下拉显示框
+  showTradeOption() {
+    comLoginPage.setData({
+      showTradeOption: !comLoginPage.data.showTradeOption,
+    });
+  },
+  // 点击下拉列表
+  selectTradeOption(e) {
+    let index = e.currentTarget.dataset.index; //获取点击的下拉列表的下标
+    let tradeList=comLoginPage.data.tradeList;
+    let trade=tradeList[index];
+    console.log(index+","+trade.value+","+trade.text);
+    comLoginPage.setData({
+      tradeSelectIndex: index,
+      tradeSelectId: trade.value,
+      showTradeOption: !comLoginPage.data.showTradeOption
+    });
+  },
   goHomePage:function(){
     wx.redirectTo({
       url: '/pages/home/home',
