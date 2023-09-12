@@ -19,6 +19,18 @@
         <view class='item_v' wx:for="{{tradeList}}" data-index="{{index}}" catchtap='addVSelectTradeOption'>{{item.text}}</view>
       </view>
     </view>
+    <view class="contactName_v">
+      <view class="tit_v">联系人</view>
+      <view class="inp_v">
+        <input id="add_v_contactName_inp" type="text" placeholder="请填写联系人" value="{{addVContactName}}" bindfocus="focusAddVContactName" bindblur="checkAddVContactName" bindinput="getInputValue"/>
+      </view>
+    </view>
+    <view class="phone_v">
+      <view class="tit_v">联系方式</view>
+      <view class="inp_v">
+        <input id="add_v_phone_inp" type="text" placeholder="请填写联系方式" value="{{addVPhone}}" bindfocus="focusAddVPhone" bindblur="checkAddVPhone" bindinput="getInputValue"/>
+      </view>
+    </view>
     <view class="submit_but_v" data-flag="{{true}}" catchtap="checkNew" wx:if="{{addVShowSubmitBut}}">提交</view>
     <view class="submiting_but_v" wx:if="{{addVShowSubmitingBut}}">提交中...</view>
     <view class="submited_but_v" wx:if="{{addVShowSubmitedBut}}">已提交</view>
@@ -39,6 +51,14 @@
       <view class="val_v" wx:if="{{detailVTradeId==7}}">电厂锅炉</view>
       <view class="val_v" wx:if="{{detailVTradeId==8}}">新能源新材料</view>
     </view>
+    <view class="contactName_v">
+      <view class="tit_v">联系人</view>
+      <view class="val_v">{{detailVContactName}}</view>
+    </view>
+    <view class="phone_v">
+      <view class="tit_v">联系方式</view>
+      <view class="val_v">{{detailVPhone}}</view>
+    </view>
     <view class="show_edit_v_but_v" data-flag="{{true}}" catchtap="showEditV">编辑</view>
   </view>
   <view class="edit_v" wx:if="{{showEditV}}">
@@ -56,6 +76,18 @@
       </view>
       <view class='trade_option_list_v' style='height:{{editVShowTradeOption?(tradeList.length>5?300:tradeList.length*30):0}}px;'>
         <view class='item_v' wx:for="{{tradeList}}" data-index="{{index}}" catchtap='editVSelectTradeOption'>{{item.text}}</view>
+      </view>
+    </view>
+    <view class="contactName_v">
+      <view class="tit_v">联系人</view>
+      <view class="inp_v">
+        <input id="edit_v_contactName_inp" type="text" placeholder="请填写联系人" value="{{editVContactName}}" bindfocus="focusEditVContactName" bindblur="checkEditVContactName" bindinput="getInputValue"/>
+      </view>
+    </view>
+    <view class="phone_v">
+      <view class="tit_v">联系方式</view>
+      <view class="inp_v">
+        <input id="edit_v_phone_inp" type="text" placeholder="请填写联系方式" value="{{editVPhone}}" bindfocus="focusEditVPhone" bindblur="checkEditVPhone" bindinput="getInputValue"/>
       </view>
     </view>
     <view class="submit_but_v" data-flag="{{true}}" catchtap="checkEdit" wx:if="{{editVShowSubmitBut}}">提交</view>

@@ -154,9 +154,25 @@ Page({
       let addVName=e.detail.value;
       comLoginPage.setData({addVName:addVName});
     }
+    else if(e.currentTarget.id=="add_v_contactName_inp"){
+      let addVContactName=e.detail.value;
+      comLoginPage.setData({addVContactName:addVContactName});
+    }
+    else if(e.currentTarget.id=="add_v_phone_inp"){
+      let addVPhone=e.detail.value;
+      comLoginPage.setData({addVPhone:addVPhone});
+    }
     else if(e.currentTarget.id=="edit_v_name_inp"){
       let editVName=e.detail.value;
       comLoginPage.setData({editVName:editVName});
+    }
+    else if(e.currentTarget.id=="edit_v_contactName_inp"){
+      let editVContactName=e.detail.value;
+      comLoginPage.setData({editVContactName:editVContactName});
+    }
+    else if(e.currentTarget.id=="edit_v_phone_inp"){
+      let editVPhone=e.detail.value;
+      comLoginPage.setData({editVPhone:editVPhone});
     }
   },
   focusAddVName:function(){
@@ -169,6 +185,38 @@ Page({
     let addVName=comLoginPage.data.addVName;
     if(addVName==""||addVName==null||addVName=="公司名不能为空"){
       comLoginPage.setData({addVName:'公司名不能为空'});
+      return false;
+    }
+    else{
+      return true;
+    }
+  },
+  focusAddVContactName:function(){
+    let addVContactName=comLoginPage.data.addVContactName;
+    if(addVContactName=="联系人不能为空"){
+      comLoginPage.setData({addVContactName:''});
+    }
+  },
+  checkAddVContactName:function(){
+    let addVContactName=comLoginPage.data.addVContactName;
+    if(addVContactName==""||addVContactName==null||addVContactName=="联系人不能为空"){
+      comLoginPage.setData({addVContactName:'联系人不能为空'});
+      return false;
+    }
+    else{
+      return true;
+    }
+  },
+  focusAddVPhone:function(){
+    let addVPhone=comLoginPage.data.addVPhone;
+    if(addVPhone=="联系方式不能为空"){
+      comLoginPage.setData({addVPhone:''});
+    }
+  },
+  checkAddVPhone:function(){
+    let addVPhone=comLoginPage.data.addVPhone;
+    if(addVPhone==""||addVPhone==null||addVPhone=="联系方式不能为空"){
+      comLoginPage.setData({addVPhone:'联系人不能为空'});
       return false;
     }
     else{
@@ -202,10 +250,68 @@ Page({
     else
       return true;
   },
+  checkEditVTradeId:function(){
+    let editVTradeSelectId=comLoginPage.data.editVTradeSelectId;
+    if(editVTradeSelectId==null||editVTradeSelectId==""){
+      wx.showToast({
+        title: "请选择行业",
+      })
+	  	return false;
+    }
+    else
+      return true;
+  },
+  focusEditVContactName:function(){
+    let editVContactName=comLoginPage.data.editVContactName;
+    if(editVContactName=="联系人不能为空"){
+      comLoginPage.setData({editVContactName:''});
+    }
+  },
+  checkEditVContactName:function(){
+    let editVContactName=comLoginPage.data.editVContactName;
+    if(editVContactName==""||editVContactName==null||editVContactName=="联系人不能为空"){
+      comLoginPage.setData({editVContactName:'联系人不能为空'});
+      return false;
+    }
+    else{
+      return true;
+    }
+  },
+  focusEditVPhone:function(){
+    let editVPhone=comLoginPage.data.editVPhone;
+    if(editVPhone=="联系方式不能为空"){
+      comLoginPage.setData({editVPhone:''});
+    }
+  },
+  checkEditVPhone:function(){
+    let editVPhone=comLoginPage.data.editVPhone;
+    if(editVPhone==""||editVPhone==null||editVPhone=="联系方式不能为空"){
+      comLoginPage.setData({editVPhone:'联系方式不能为空'});
+      return false;
+    }
+    else{
+      return true;
+    }
+  },
   checkNew:function(){
     if(comLoginPage.checkAddVName()){
       if(comLoginPage.checkAddVTradeId()){
-        comLoginPage.newCompany();
+        if(comLoginPage.checkAddVContactName()){
+          if(comLoginPage.checkAddVPhone()){
+            comLoginPage.newCompany();
+          }
+        }
+      }
+    }
+  },
+  checkEdit:function(){
+    if(comLoginPage.checkEditVName()){
+      if(comLoginPage.checkEditVTradeId()){
+        if(comLoginPage.checkEditVContactName()){
+          if(comLoginPage.checkEditVPhone()){
+            comLoginPage.editCompany();
+          }
+        }
       }
     }
   },
@@ -213,14 +319,18 @@ Page({
     comLoginPage.addVSaving(true);
     let name=comLoginPage.data.addVName;
     let tradeSelectId=comLoginPage.data.addVTradeSelectId;
+    let contactName=comLoginPage.data.addVContactName;
+    let phone=comLoginPage.data.addVPhone;
     let openId=wxUser.openId;
     console.log("name==="+name)
     console.log("tradeSelectId==="+tradeSelectId)
+    console.log("contactName==="+contactName)
+    console.log("phone==="+phone)
     console.log("openId==="+openId)
     //return false;
     wx.request({
       url: rootIP+"submitCompany",
-      data:{name:name,tradeId:tradeSelectId,openId:openId},
+      data:{name:name,tradeId:tradeSelectId,contactName:contactName,phone:phone,openId:openId},
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
@@ -246,12 +356,61 @@ Page({
       }
     })
   },
+  editCompany:function(){
+    comLoginPage.editVSaving(true);
+    let name=comLoginPage.data.editVName;
+    let tradeSelectId=comLoginPage.data.editVTradeSelectId;
+    let contactName=comLoginPage.data.editVContactName;
+    let phone=comLoginPage.data.editVPhone;
+    let openId=wxUser.openId;
+    console.log("name==="+name)
+    console.log("tradeSelectId==="+tradeSelectId)
+    console.log("contactName==="+contactName)
+    console.log("phone==="+phone)
+    console.log("openId==="+openId)
+    //return false;
+    wx.request({
+      url: rootIP+"editCompany",
+      data:{name:name,tradeId:tradeSelectId,contactName:contactName,phone:phone,openId:openId},
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      success: function (res) {
+        let data=res.data;
+        let message=data.message;
+        console.log("message==="+message)
+        if(message=="ok"){
+          comLoginPage.editVSaving(false);
+          wx.showToast({
+            title: data.info,
+          })
+          setTimeout(() => {
+            comLoginPage.goSubSucPage();
+          }, 1000);
+        }
+        else{
+          wx.showToast({
+            title: data.info,
+          })
+        }
+      }
+    })
+  },
   addVSaving:function(flag){
     if(flag){
       comLoginPage.setData({addVShowSubmitBut:false,addVShowSubmitingBut:true});
     }
     else{
       comLoginPage.setData({addVShowSubmitingBut:false,addVShowSubmitedBut:true});
+    }
+  },
+  editVSaving:function(flag){
+    if(flag){
+      comLoginPage.setData({editVShowSubmitBut:false,editVShowSubmitingBut:true});
+    }
+    else{
+      comLoginPage.setData({editVShowSubmitingBut:false,editVShowSubmitedBut:true});
     }
   },
   getComInfo:function(){
@@ -269,9 +428,25 @@ Page({
         let company=data.company;
         let name=company.name;
         let tradeId=company.tradeId;
-        comLoginPage.setData({detailVName:name,detailVTradeId:tradeId});
+        let contactName=company.contactName;
+        let phone=company.phone;
+        let tradeSelectIndex=comLoginPage.getTradeIndexInListById(tradeId);
+        comLoginPage.setData({detailVName:name,detailVTradeId:tradeId,detailVContactName:contactName,detailVPhone:phone,editVName:name,editVTradeId:tradeId,editVTradeSelectId:tradeId,editVTradeSelectIndex:tradeSelectIndex,editVContactName:contactName,editVPhone:phone});
       }
     })
+  },
+  getTradeIndexInListById:function(tradeId){
+    let tradeSelectIndex;
+    let tradeList=comLoginPage.data.tradeList;
+    //console.log(tradeList)
+    for(let i=0;i<tradeList.length;i++){
+      let trade=tradeList[i];
+      if(tradeId==trade.value){
+        tradeSelectIndex=i;
+        break;
+      }
+    }
+    return tradeSelectIndex;
   },
   showEditV:function(e){
     let flag = e.currentTarget.dataset.flag;

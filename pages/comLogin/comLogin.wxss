@@ -20,10 +20,16 @@
 }
 .main_v .add_v .name_v,
 .main_v .add_v .trade_v,
+.main_v .add_v .contactName_v,
+.main_v .add_v .phone_v,
 .main_v .detail_v .name_v,
 .main_v .detail_v .trade_v,
+.main_v .detail_v .contactName_v,
+.main_v .detail_v .phone_v,
 .main_v .edit_v .name_v,
-.main_v .edit_v .trade_v{
+.main_v .edit_v .trade_v,
+.main_v .edit_v .contactName_v,
+.main_v .edit_v .phone_v{
   width: 100%;
   height: 85px;
   margin:10px auto;
@@ -32,26 +38,42 @@
 }
 .main_v .add_v .name_v .tit_v,
 .main_v .add_v .trade_v .tit_v,
+.main_v .add_v .contactName_v .tit_v,
+.main_v .add_v .phone_v .tit_v,
 .main_v .detail_v .name_v .tit_v,
 .main_v .detail_v .trade_v .tit_v,
+.main_v .detail_v .contactName_v .tit_v,
+.main_v .detail_v .phone_v .tit_v,
 .main_v .edit_v .name_v .tit_v,
-.main_v .edit_v .trade_v .tit_v{
+.main_v .edit_v .trade_v .tit_v,
+.main_v .edit_v .contactName_v .tit_v,
+.main_v .edit_v .phone_v .tit_v{
   width: 90%;
   margin:10px auto 0;
 }
 .main_v .add_v .name_v .inp_v,
 .main_v .add_v .trade_v .select_v,
+.main_v .add_v .contactName_v .inp_v,
+.main_v .add_v .phone_v .inp_v,
 .main_v .detail_v .name_v .val_v,
 .main_v .detail_v .trade_v .val_v,
+.main_v .detail_v .contactName_v .val_v,
+.main_v .detail_v .phone_v .val_v,
 .main_v .edit_v .name_v .inp_v,
-.main_v .edit_v .trade_v .select_v{
+.main_v .edit_v .trade_v .select_v,
+.main_v .edit_v .contactName_v .inp_v,
+.main_v .edit_v .phone_v .inp_v{
   width: 90%;
   margin:10px auto 0;
 }
 .main_v .add_v .name_v .inp_v input,
 .main_v .add_v .trade_v .select_v .selected_text_v,
+.main_v .add_v .contactName_v .inp_v input,
+.main_v .add_v .phone_v .inp_v input,
 .main_v .edit_v .name_v .inp_v input,
-.main_v .edit_v .trade_v .select_v .selected_text_v{
+.main_v .edit_v .trade_v .select_v .selected_text_v,
+.main_v .edit_v .contactName_v .inp_v input,
+.main_v .edit_v .phone_v .inp_v input{
   width: 90%;
   height: 30px;
   line-height: 30px;
