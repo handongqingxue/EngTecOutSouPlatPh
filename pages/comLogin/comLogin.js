@@ -22,6 +22,7 @@ Page({
       {value:"8",text:"新能源新材料"}
     ],
     showAddV:false,
+    showDetailV:false,
     addVShowSubmitBut:true,
     addVShowSubmitingBut:false,
     addVShowSubmitedBut:false,
@@ -100,7 +101,8 @@ Page({
         let exist=data.exist;
         console.log("exist==="+exist)
         if(exist){
-          
+          comLoginPage.setData({showDetailV:true});
+          comLoginPage.getComInfo();
         }
         else{
           comLoginPage.setData({showAddV:true});
@@ -211,6 +213,25 @@ Page({
     else{
       comLoginPage.setData({addVShowSubmitingBut:false,addVShowSubmitedBut:true});
     }
+  },
+  getComInfo:function(){
+    let openId=wxUser.openId;
+    wx.request({
+      url: rootIP+"getCompanyByOpenId",
+      method: 'POST',
+      data: { openId:openId},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      success: function (res) {
+        console.log(res);
+        let data=res.data;
+        let company=data.company;
+        let name=company.name;
+        let tradeId=company.tradeId;
+        comLoginPage.setData({detailVName:name,detailVTradeId:tradeId});
+      }
+    })
   },
   goSubSucPage:function(){
     wx.redirectTo({

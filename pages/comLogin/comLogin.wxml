@@ -23,4 +23,21 @@
     <view class="submiting_but_v" wx:if="{{addVShowSubmitingBut}}">提交中...</view>
     <view class="submited_but_v" wx:if="{{addVShowSubmitedBut}}">已提交</view>
   </view>
+  <view class="detail_v" wx:if="{{showDetailV}}">
+    <view class="name_v">
+      <view class="tit_v">公司名</view>
+      <view class="val_v">{{detailVName}}</view>
+    </view>
+    <view class="trade_v">
+      <view class="tit_v">行业</view>
+      <view class="val_v" wx:if="{{detailVTradeId==1}}">工业自动化系统集成</view>
+      <view class="val_v" wx:if="{{detailVTradeId==2}}">环保工程</view>
+      <view class="val_v" wx:if="{{detailVTradeId==3}}">设备制造</view>
+      <view class="val_v" wx:if="{{detailVTradeId==4}}">监控安装</view>
+      <view class="val_v" wx:if="{{detailVTradeId==5}}">工业软件</view>
+      <view class="val_v" wx:if="{{detailVTradeId==6}}">化工行业</view>
+      <view class="val_v" wx:if="{{detailVTradeId==7}}">电厂锅炉</view>
+      <view class="val_v" wx:if="{{detailVTradeId==8}}">新能源新材料</view>
+    </view>
+  </view>
 </view>
