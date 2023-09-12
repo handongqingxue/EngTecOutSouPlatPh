@@ -9,7 +9,7 @@ Page({
    */
   data: {
     backButSign:'<',
-    showTradeOption:false,
+    addVShowTradeOption:false,
     tradeList:[
       {value:"",text:"请选择"},
       {value:"1",text:"工业自动化系统集成"},
@@ -22,6 +22,9 @@ Page({
       {value:"8",text:"新能源新材料"}
     ],
     showAddV:false,
+    addVShowSubmitBut:true,
+    addVShowSubmitingBut:false,
+    addVShowSubmitedBut:false,
 
   },
 
@@ -107,23 +110,113 @@ Page({
     })
   },
   // 点击下拉显示框
-  showTradeOption() {
+  addVShowTradeOption() {
     comLoginPage.setData({
-      showTradeOption: !comLoginPage.data.showTradeOption,
+      addVShowTradeOption: !comLoginPage.data.addVShowTradeOption,
     });
   },
   // 点击下拉列表
-  selectTradeOption(e) {
+  AddVSelectTradeOption(e) {
     let index = e.currentTarget.dataset.index; //获取点击的下拉列表的下标
     let tradeList=comLoginPage.data.tradeList;
     let trade=tradeList[index];
     console.log(index+","+trade.value+","+trade.text);
     comLoginPage.setData({
-      tradeSelectIndex: index,
-      tradeSelectId: trade.value,
-      showTradeOption: !comLoginPage.data.showTradeOption
+      addVTradeSelectIndex: index,
+      addVTradeSelectId: trade.value,
+      addVShowTradeOption: !comLoginPage.data.addVShowTradeOption
     });
   },
+  getInputValue:function(e){
+    if(e.currentTarget.id=="add_v_name_inp"){
+      let addVName=e.detail.value;
+      comLoginPage.setData({addVName:addVName});
+    }
+  },
+  focusAddVName:function(){
+    let addVName=comLoginPage.data.addVName;
+    if(addVName=="公司名不能为空"){
+      comLoginPage.setData({addVName:''});
+    }
+  },
+  checkAddVName:function(){
+    let addVName=comLoginPage.data.addVName;
+    if(addVName==""||addVName==null||addVName=="公司名不能为空"){
+      comLoginPage.setData({addVName:'公司名不能为空'});
+      return false;
+    }
+    else{
+      return true;
+    }
+  },
+  checkAddVTradeId:function(){
+    let addVTradeSelectId=comLoginPage.data.addVTradeSelectId;
+    if(addVTradeSelectId==null||addVTradeSelectId==""){
+      wx.showToast({
+        title: "请选择行业",
+      })
+	  	return false;
+    }
+    else
+      return true;
+  },
+  checkNew:function(){
+    if(comLoginPage.checkAddVName()){
+      if(comLoginPage.checkAddVTradeId()){
+        comLoginPage.newCompany();
+      }
+    }
+  },
+  newCompany:function(){
+    comLoginPage.addVSaving(true);
+    let name=comLoginPage.data.addVName;
+    let tradeSelectId=comLoginPage.data.addVTradeSelectId;
+    let openId=wxUser.openId;
+    console.log("name==="+name)
+    console.log("tradeSelectId==="+tradeSelectId)
+    console.log("openId==="+openId)
+    //return false;
+    wx.request({
+      url: rootIP+"submitCompany",
+      data:{name:name,tradeId:tradeSelectId,openId:openId},
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      success: function (res) {
+        let data=res.data;
+        let message=data.message;
+        console.log("message==="+message)
+        if(message=="ok"){
+          comLoginPage.addVSaving(false);
+          wx.showToast({
+            title: data.info,
+          })
+          setTimeout(() => {
+            comLoginPage.goSubSucPage();
+          }, 1000);
+        }
+        else{
+          wx.showToast({
+            title: data.info,
+          })
+        }
+      }
+    })
+  },
+  addVSaving:function(flag){
+    if(flag){
+      comLoginPage.setData({addVShowSubmitBut:false,addVShowSubmitingBut:true});
+    }
+    else{
+      comLoginPage.setData({addVShowSubmitingBut:false,addVShowSubmitedBut:true});
+    }
+  },
+  goSubSucPage:function(){
+    wx.redirectTo({
+      url: '/pages/subSuc/subSuc',
+    })
+  },
   goHomePage:function(){
     wx.redirectTo({
       url: '/pages/home/home',

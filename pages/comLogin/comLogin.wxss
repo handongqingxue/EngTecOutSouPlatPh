@@ -71,3 +71,15 @@
   padding-left: 10px;
   background-color: #0f0;
 }
+.main_v .add_v .submit_but_v,
+.main_v .add_v .submiting_but_v,
+.main_v .add_v .submited_but_v{
+  width: 80%;
+  height: 30px;
+  line-height: 30px;
+  margin: 20px auto;
+  color: #FFF;
+  text-align: center;
+  background-color: #ff9205;
+  border-radius:3px;
+}

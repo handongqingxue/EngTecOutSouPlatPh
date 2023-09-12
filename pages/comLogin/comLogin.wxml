@@ -12,12 +12,15 @@
     <view class="trade_v">
       <view class="tit_v">行业</view>
       <view class="select_v">
-        <view class='selected_text_v' catchtap='showTradeOption'>{{tradeList[tradeSelectIndex]==null?'请选择':tradeList[tradeSelectIndex].text}}</view>
-          <image class='select_img {{showTradeOption&&"select_img_rotate"}}' src='../../images/sanjiao.png'></image>
+        <view class='selected_text_v' catchtap='addVShowTradeOption'>{{tradeList[addVTradeSelectIndex]==null?'请选择':tradeList[addVTradeSelectIndex].text}}</view>
+          <image class='select_img {{addVShowTradeOption&&"select_img_rotate"}}' src='../../images/sanjiao.png'></image>
       </view>
-      <view class='trade_option_list_v' style='height:{{showTradeOption?(tradeList.length>5?300:tradeList.length*30):0}}px;'>
-        <view class='item_v' wx:for="{{tradeList}}" data-index="{{index}}" catchtap='selectTradeOption'>{{item.text}}</view>
+      <view class='trade_option_list_v' style='height:{{addVShowTradeOption?(tradeList.length>5?300:tradeList.length*30):0}}px;'>
+        <view class='item_v' wx:for="{{tradeList}}" data-index="{{index}}" catchtap='AddVSelectTradeOption'>{{item.text}}</view>
       </view>
     </view>
+    <view class="submit_but_v" data-flag="{{true}}" catchtap="checkNew" wx:if="{{addVShowSubmitBut}}">提交</view>
+    <view class="submiting_but_v" wx:if="{{addVShowSubmitingBut}}">提交中...</view>
+    <view class="submited_but_v" wx:if="{{addVShowSubmitedBut}}">已提交</view>
   </view>
 </view>
