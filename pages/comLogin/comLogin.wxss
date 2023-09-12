@@ -21,7 +21,9 @@
 .main_v .add_v .name_v,
 .main_v .add_v .trade_v,
 .main_v .detail_v .name_v,
-.main_v .detail_v .trade_v{
+.main_v .detail_v .trade_v,
+.main_v .edit_v .name_v,
+.main_v .edit_v .trade_v{
   width: 100%;
   height: 85px;
   margin:10px auto;
@@ -31,19 +33,25 @@
 .main_v .add_v .name_v .tit_v,
 .main_v .add_v .trade_v .tit_v,
 .main_v .detail_v .name_v .tit_v,
-.main_v .detail_v .trade_v .tit_v{
+.main_v .detail_v .trade_v .tit_v,
+.main_v .edit_v .name_v .tit_v,
+.main_v .edit_v .trade_v .tit_v{
   width: 90%;
   margin:10px auto 0;
 }
 .main_v .add_v .name_v .inp_v,
 .main_v .add_v .trade_v .select_v,
 .main_v .detail_v .name_v .val_v,
-.main_v .detail_v .trade_v .val_v{
+.main_v .detail_v .trade_v .val_v,
+.main_v .edit_v .name_v .inp_v,
+.main_v .edit_v .trade_v .select_v{
   width: 90%;
   margin:10px auto 0;
 }
 .main_v .add_v .name_v .inp_v input,
-.main_v .add_v .trade_v .select_v .selected_text_v{
+.main_v .add_v .trade_v .select_v .selected_text_v,
+.main_v .edit_v .name_v .inp_v input,
+.main_v .edit_v .trade_v .select_v .selected_text_v{
   width: 90%;
   height: 30px;
   line-height: 30px;
@@ -51,17 +59,20 @@
   padding: 0 10px 0 10px;
   background-color: #eee;
 }
-.main_v .add_v .trade_v .select_v .select_img {
+.main_v .add_v .trade_v .select_v .select_img,
+.main_v .edit_v .trade_v .select_v .select_img {
   width: 17px;
   height: 17px;
   float: right;
   margin-top: -25px;
   margin-right: 3px;
 }
-.main_v .add_v .trade_v .select_v .select_img_rotate {
+.main_v .add_v .trade_v .select_v .select_img_rotate,
+.main_v .edit_v .trade_v .select_v .select_img_rotate {
   transform: rotate(180deg);
 }
-.main_v .add_v .trade_option_list_v{
+.main_v .add_v .trade_option_list_v,
+.main_v .edit_v .trade_option_list_v{
   width: 85%;
   margin-top: 1px;
   margin-left: 16px;
@@ -70,7 +81,8 @@
   position: absolute;
   z-index: 3;
 }
-.main_v .add_v .trade_option_list_v .item_v{
+.main_v .add_v .trade_option_list_v .item_v,
+.main_v .edit_v .trade_option_list_v .item_v{
   width: 100%;
   height: 30px;
   line-height: 30px;
@@ -79,7 +91,8 @@
 }
 .main_v .add_v .submit_but_v,
 .main_v .add_v .submiting_but_v,
-.main_v .add_v .submited_but_v{
+.main_v .add_v .submited_but_v,
+.main_v .detail_v .show_edit_v_but_v{
   width: 80%;
   height: 30px;
   line-height: 30px;

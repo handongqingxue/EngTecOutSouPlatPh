@@ -23,6 +23,7 @@ Page({
     ],
     showAddV:false,
     showDetailV:false,
+    showEditV:false,
     addVShowSubmitBut:true,
     addVShowSubmitingBut:false,
     addVShowSubmitedBut:false,
@@ -117,8 +118,13 @@ Page({
       addVShowTradeOption: !comLoginPage.data.addVShowTradeOption,
     });
   },
+  editVShowTradeOption() {
+    comLoginPage.setData({
+      editVShowTradeOption: !comLoginPage.data.editVShowTradeOption,
+    });
+  },
   // 点击下拉列表
-  AddVSelectTradeOption(e) {
+  addVSelectTradeOption(e) {
     let index = e.currentTarget.dataset.index; //获取点击的下拉列表的下标
     let tradeList=comLoginPage.data.tradeList;
     let trade=tradeList[index];
@@ -129,10 +135,25 @@ Page({
       addVShowTradeOption: !comLoginPage.data.addVShowTradeOption
     });
   },
+  editVSelectTradeOption(e) {
+    let index = e.currentTarget.dataset.index; //获取点击的下拉列表的下标
+    let tradeList=comLoginPage.data.tradeList;
+    let trade=tradeList[index];
+    console.log(index+","+trade.value+","+trade.text);
+    comLoginPage.setData({
+      editVTradeSelectIndex: index,
+      editVTradeSelectId: trade.value,
+      editVShowTradeOption: !comLoginPage.data.editVShowTradeOption
+    });
+  },
   getInputValue:function(e){
     if(e.currentTarget.id=="add_v_name_inp"){
       let addVName=e.detail.value;
       comLoginPage.setData({addVName:addVName});
+    }
+    else if(e.currentTarget.id=="edit_v_name_inp"){
+      let editVName=e.detail.value;
+      comLoginPage.setData({editVName:editVName});
     }
   },
   focusAddVName:function(){
@@ -145,6 +166,22 @@ Page({
     let addVName=comLoginPage.data.addVName;
     if(addVName==""||addVName==null||addVName=="公司名不能为空"){
       comLoginPage.setData({addVName:'公司名不能为空'});
+      return false;
+    }
+    else{
+      return true;
+    }
+  },
+  focusEditVName:function(){
+    let editVName=comLoginPage.data.editVName;
+    if(editVName=="公司名不能为空"){
+      comLoginPage.setData({editVName:''});
+    }
+  },
+  checkEditVName:function(){
+    let editVName=comLoginPage.data.editVName;
+    if(editVName==""||editVName==null||editVName=="公司名不能为空"){
+      comLoginPage.setData({editVName:'公司名不能为空'});
       return false;
     }
     else{
@@ -232,6 +269,15 @@ Page({
         comLoginPage.setData({detailVName:name,detailVTradeId:tradeId});
       }
     })
+  },
+  showEditV:function(e){
+    let flag = e.currentTarget.dataset.flag;
+    if(flag){
+      comLoginPage.setData({showDetailV:false,showEditV:true});
+    }
+    else{
+
+    }
   },
   goSubSucPage:function(){
     wx.redirectTo({

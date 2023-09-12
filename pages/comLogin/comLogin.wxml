@@ -16,7 +16,7 @@
           <image class='select_img {{addVShowTradeOption&&"select_img_rotate"}}' src='../../images/sanjiao.png'></image>
       </view>
       <view class='trade_option_list_v' style='height:{{addVShowTradeOption?(tradeList.length>5?300:tradeList.length*30):0}}px;'>
-        <view class='item_v' wx:for="{{tradeList}}" data-index="{{index}}" catchtap='AddVSelectTradeOption'>{{item.text}}</view>
+        <view class='item_v' wx:for="{{tradeList}}" data-index="{{index}}" catchtap='addVSelectTradeOption'>{{item.text}}</view>
       </view>
     </view>
     <view class="submit_but_v" data-flag="{{true}}" catchtap="checkNew" wx:if="{{addVShowSubmitBut}}">提交</view>
@@ -38,6 +38,25 @@
       <view class="val_v" wx:if="{{detailVTradeId==6}}">化工行业</view>
       <view class="val_v" wx:if="{{detailVTradeId==7}}">电厂锅炉</view>
       <view class="val_v" wx:if="{{detailVTradeId==8}}">新能源新材料</view>
+    </view>
+    <view class="show_edit_v_but_v" data-flag="{{true}}" catchtap="showEditV">编辑</view>
+  </view>
+  <view class="edit_v" wx:if="{{showEditV}}">
+    <view class="name_v">
+      <view class="tit_v">公司名</view>
+      <view class="inp_v">
+        <input id="edit_v_name_inp" type="text" placeholder="请填写公司名" value="{{editVName}}" bindfocus="focusEditVName" bindblur="checkEditVName" bindinput="getInputValue"/>
+      </view>
+    </view>
+    <view class="trade_v">
+      <view class="tit_v">行业</view>
+      <view class="select_v">
+        <view class='selected_text_v' catchtap='editVShowTradeOption'>{{tradeList[editVTradeSelectIndex]==null?'请选择':tradeList[editVTradeSelectIndex].text}}</view>
+          <image class='select_img {{editVShowTradeOption&&"select_img_rotate"}}' src='../../images/sanjiao.png'></image>
+      </view>
+      <view class='trade_option_list_v' style='height:{{editVShowTradeOption?(tradeList.length>5?300:tradeList.length*30):0}}px;'>
+        <view class='item_v' wx:for="{{tradeList}}" data-index="{{index}}" catchtap='editVSelectTradeOption'>{{item.text}}</view>
+      </view>
     </view>
   </view>
 </view>
