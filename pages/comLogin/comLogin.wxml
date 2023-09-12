@@ -58,5 +58,8 @@
         <view class='item_v' wx:for="{{tradeList}}" data-index="{{index}}" catchtap='editVSelectTradeOption'>{{item.text}}</view>
       </view>
     </view>
+    <view class="submit_but_v" data-flag="{{true}}" catchtap="checkEdit" wx:if="{{editVShowSubmitBut}}">提交</view>
+    <view class="submiting_but_v" wx:if="{{editVShowSubmitingBut}}">提交中...</view>
+    <view class="submited_but_v" wx:if="{{editVShowSubmitedBut}}">已提交</view>
   </view>
 </view>

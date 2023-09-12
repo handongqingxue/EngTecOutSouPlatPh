@@ -92,7 +92,10 @@
 .main_v .add_v .submit_but_v,
 .main_v .add_v .submiting_but_v,
 .main_v .add_v .submited_but_v,
-.main_v .detail_v .show_edit_v_but_v{
+.main_v .detail_v .show_edit_v_but_v,
+.main_v .edit_v .submit_but_v,
+.main_v .edit_v .submiting_but_v,
+.main_v .edit_v .submited_but_v{
   width: 80%;
   height: 30px;
   line-height: 30px;

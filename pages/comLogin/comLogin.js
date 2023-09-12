@@ -27,6 +27,9 @@ Page({
     addVShowSubmitBut:true,
     addVShowSubmitingBut:false,
     addVShowSubmitedBut:false,
+    editVShowSubmitBut:true,
+    editVShowSubmitingBut:false,
+    editVShowSubmitedBut:false,
 
   },
 
