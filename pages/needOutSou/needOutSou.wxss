@@ -37,6 +37,7 @@
 .main_v .area_v,
 .main_v .enginName_v,
 .main_v .needCount_v,
+.main_v .trade_v,
 .main_v .otherTrade_v,
 .main_v .otherSpeciality_v{
   width: 100%;
@@ -65,6 +66,7 @@
 .main_v .area_v .tit_v,
 .main_v .enginName_v .tit_v,
 .main_v .needCount_v .tit_v,
+.main_v .trade_v .tit_v,
 .main_v .otherTrade_v .tit_v,
 .main_v .otherSpeciality_v .tit_v,
 .main_v .describe_v .tit_v,
@@ -78,6 +80,7 @@
 .main_v .area_v .inp_v,
 .main_v .enginName_v .inp_v,
 .main_v .needCount_v .inp_v,
+.main_v .trade_v .select_v,
 .main_v .otherTrade_v .inp_v,
 .main_v .otherSpeciality_v .inp_v,
 .main_v .startDate_v .picker_v,
@@ -94,6 +97,7 @@
 .main_v .area_v .inp_v input,
 .main_v .enginName_v .inp_v input,
 .main_v .needCount_v .inp_v input,
+.main_v .trade_v .select_v .selected_text_v,
 .main_v .otherTrade_v .inp_v input,
 .main_v .otherSpeciality_v .inp_v input{
   width: 90%;
@@ -101,6 +105,32 @@
   font-size: 12px;
   padding: 0 10px 0 10px;
   background-color: #eee;
+}
+.main_v .trade_v .select_v .select_img {
+  width: 17px;
+  height: 17px;
+  float: right;
+  margin-top: -25px;
+  margin-right: 3px;
+}
+.main_v .trade_v .select_v .select_img_rotate {
+  transform: rotate(180deg);
+}
+.main_v .trade_v .trade_option_list_v{
+  width: 85%;
+  margin-top: 1px;
+  margin-left: 16px;
+  background-color: #eee;
+  overflow-y: auto;
+  position: absolute;
+  z-index: 3;
+}
+.main_v .trade_v .trade_option_list_v .item_v{
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 10px;
+  background-color: #0f0;
 }
 .main_v .describe_v .ta_v textarea{
   width: 90%;

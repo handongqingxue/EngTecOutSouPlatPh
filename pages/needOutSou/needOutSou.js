@@ -9,6 +9,18 @@ Page({
    */
   data: {
     backButSign:'<',
+    showTradeOption:false,
+    tradeList:[
+      {value:"",text:"请选择"},
+      {value:"1",text:"工业自动化系统集成"},
+      {value:"2",text:"环保工程"},
+      {value:"3",text:"设备制造"},
+      {value:"4",text:"监控安装"},
+      {value:"5",text:"工业软件"},
+      {value:"6",text:"化工行业"},
+      {value:"7",text:"电厂锅炉"},
+      {value:"8",text:"新能源新材料"}
+    ],
     startDate:'',
     endDate:'',
     describePlaceholder:'请填写描述',
@@ -75,6 +87,24 @@ Page({
   onShareAppMessage() {
 
   },
+  // 点击下拉显示框
+  showTradeOption() {
+    needOutSouPage.setData({
+      showTradeOption: !needOutSouPage.data.showTradeOption,
+    });
+  },
+  // 点击下拉列表
+  selectTradeOption(e) {
+    let index = e.currentTarget.dataset.index; //获取点击的下拉列表的下标
+    let tradeList=needOutSouPage.data.tradeList;
+    let trade=tradeList[index];
+    console.log(index+","+trade.value+","+trade.text);
+    needOutSouPage.setData({
+      tradeSelectIndex: index,
+      tradeSelectId: trade.value,
+      showTradeOption: !needOutSouPage.data.showTradeOption
+    });
+  },
   checkNew:function(){
     if(needOutSouPage.checkContactName()){
       if(needOutSouPage.checkPhone()){
