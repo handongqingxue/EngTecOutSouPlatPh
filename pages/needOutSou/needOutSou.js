@@ -111,8 +111,8 @@ Page({
         if(needOutSouPage.checkArea()){
           if(needOutSouPage.checkEnginName()){
             if(needOutSouPage.checkNeedCount()){
-              if(needOutSouPage.checkOtherTrade()){
-                if(needOutSouPage.checkOtherSpeciality()){
+              if(needOutSouPage.checkTradeId()){
+                if(needOutSouPage.checkSpeciality()){
                   if(needOutSouPage.checkDescribe()){
                     if(needOutSouPage.checkStartDate()){
                       if(needOutSouPage.checkEndDate()){
@@ -136,8 +136,9 @@ Page({
     let openId=wxUser.openId;
     let enginName=needOutSouPage.data.enginName;
     let needCount=needOutSouPage.data.needCount;
+    let tradeSelectId=needOutSouPage.data.tradeSelectId;
     let otherTrade=needOutSouPage.data.otherTrade;
-    let otherSpeciality=needOutSouPage.data.otherSpeciality;
+    let speciality=needOutSouPage.data.speciality;
     let describe=needOutSouPage.data.describe;
     let startDate=needOutSouPage.data.startDate;
     let endDate=needOutSouPage.data.endDate;
@@ -147,15 +148,16 @@ Page({
     console.log("openId==="+openId)
     console.log("enginName==="+enginName)
     console.log("needCount==="+needCount)
+    console.log("tradeSelectId==="+tradeSelectId)
     console.log("otherTrade==="+otherTrade)
-    console.log("otherSpeciality==="+otherSpeciality)
+    console.log("speciality==="+speciality)
     console.log("describe==="+describe)
     console.log("startDate==="+startDate)
     console.log("endDate==="+endDate)
     //return false;
     wx.request({
       url: rootIP+"submitNeedOutSou",
-      data:{contactName:contactName,phone:phone,area:area,openId:openId,enginName:enginName,needCount:needCount,otherTrade:otherTrade,otherSpeciality:otherSpeciality,describe:describe,startDate:startDate,endDate:endDate},
+      data:{contactName:contactName,phone:phone,area:area,openId:openId,enginName:enginName,needCount:needCount,tradeId:tradeSelectId,otherTrade:otherTrade,speciality:speciality,describe:describe,startDate:startDate,endDate:endDate},
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
@@ -206,9 +208,9 @@ Page({
       let otherTrade=e.detail.value;
       needOutSouPage.setData({otherTrade:otherTrade});
     }
-    else if(e.currentTarget.id=="otherSpeciality_inp"){
-      let otherSpeciality=e.detail.value;
-      needOutSouPage.setData({otherSpeciality:otherSpeciality});
+    else if(e.currentTarget.id=="speciality_inp"){
+      let speciality=e.detail.value;
+      needOutSouPage.setData({speciality:speciality});
     }
     else if(e.currentTarget.id=="describe_inp"){
       let describe=e.detail.value;
@@ -239,7 +241,6 @@ Page({
   },
   checkPhone:function(){
     let phone=needOutSouPage.data.phone;
-    console.log(phone)
     if(phone==""||phone==null||phone=="联系方式不能为空"){
       needOutSouPage.setData({phone:'联系方式不能为空'});
       return false;
@@ -256,7 +257,6 @@ Page({
   },
   checkArea:function(){
     let area=needOutSouPage.data.area;
-    console.log(area)
     if(area==""||area==null||area=="地区不能为空"){
       needOutSouPage.setData({area:'地区不能为空'});
       return false;
@@ -273,7 +273,6 @@ Page({
   },
   checkEnginName:function(){
     let enginName=needOutSouPage.data.enginName;
-    console.log(enginName)
     if(enginName==""||enginName==null||enginName=="工程名不能为空"){
       needOutSouPage.setData({enginName:'工程名不能为空'});
       return false;
@@ -284,7 +283,6 @@ Page({
   },
   checkNeedCount:function(){
     let needCount=needOutSouPage.data.needCount;
-    console.log(needCount)
     if(needCount==""||needCount==null){
       wx.showToast({
         title: "工程所需人数",
@@ -295,6 +293,17 @@ Page({
       return true;
     }
   },
+  checkTradeId:function(){
+    let tradeSelectId=needOutSouPage.data.tradeSelectId;
+    if(tradeSelectId==null||tradeSelectId==""){
+      wx.showToast({
+        title: "请选择行业",
+      })
+	  	return false;
+    }
+    else
+      return true;
+  },
   focusOtherTrade:function(){
     let otherTrade=needOutSouPage.data.otherTrade;
     if(otherTrade=="其他行业不能为空"){
@@ -303,7 +312,6 @@ Page({
   },
   checkOtherTrade:function(){
     let otherTrade=needOutSouPage.data.otherTrade;
-    console.log(otherTrade)
     if(otherTrade==""||otherTrade==null||otherTrade=="其他行业不能为空"){
       needOutSouPage.setData({otherTrade:'其他行业不能为空'});
       return false;
@@ -312,17 +320,17 @@ Page({
       return true;
     }
   },
-  focusOtherSpeciality:function(){
-    let otherSpeciality=needOutSouPage.data.otherSpeciality;
-    if(otherSpeciality=="其他特长不能为空"){
-      needOutSouPage.setData({otherSpeciality:''});
+  focusSpeciality:function(){
+    let speciality=needOutSouPage.data.speciality;
+    if(speciality=="特长不能为空"){
+      needOutSouPage.setData({speciality:''});
     }
   },
-  checkOtherSpeciality:function(){
-    let otherSpeciality=needOutSouPage.data.otherSpeciality;
-    console.log(otherSpeciality)
-    if(otherSpeciality==""||otherSpeciality==null||otherSpeciality=="其他特长不能为空"){
-      needOutSouPage.setData({otherSpeciality:'其他特长不能为空'});
+  checkSpeciality:function(){
+    let speciality=needOutSouPage.data.speciality;
+    console.log(speciality)
+    if(speciality==""||speciality==null||speciality=="特长不能为空"){
+      needOutSouPage.setData({speciality:'特长不能为空'});
       return false;
     }
     else{
