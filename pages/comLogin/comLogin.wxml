@@ -60,7 +60,7 @@
       <view class="val_v">{{detailVPhone}}</view>
     </view>
     <view class="show_edit_v_but_v" data-flag="{{true}}" catchtap="showEditV">编辑</view>
-    <view class="osm_but_v" catchtap="checkEdit">外包管理</view>
+    <view class="osm_but_v" catchtap="goOSMPage">外包管理</view>
   </view>
   <view class="edit_v" wx:if="{{showEditV}}">
     <view class="name_v">

@@ -1,0 +1,9 @@
+<!--pages/outSouMana/select.wxml-->
+<view class="main_v">
+  <view class="title_v">外包管理</view>
+  <view class="back_but_v" data-pageflag="{{comLogin}}" catchtap="goPage">{{backButSign}}</view>
+  <view class="but_list_v">
+    <view class="nos_but_v" data-pageflag="{{nos}}" catchtap="goPage">需要外包</view>
+    <view class="pos_but_v" data-pageflag="{{nos}}" catchtap="goPage">提供外包</view>
+  </view>
+</view>

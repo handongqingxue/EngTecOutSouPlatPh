@@ -128,6 +128,7 @@ Page({
         let message=data.message;
         console.log("message==="+message)
         var wxUser={openId:openId,nickName:nickName,avatarUrl:avatarUrl};
+        console.log(wxUser)
         wx.setStorageSync("wxUser",wxUser);
       }
     })
@@ -146,9 +147,9 @@ Page({
       case home.data.comLogin:
         url+='comLogin/comLogin';
         break;
-      }
-      wx.redirectTo({
-        url: url,
-      })
     }
-  })
+    wx.redirectTo({
+      url: url,
+    })
+  }
+})

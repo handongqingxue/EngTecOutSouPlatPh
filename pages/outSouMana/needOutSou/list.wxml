@@ -1,0 +1,37 @@
+<!--pages/outSouMana/needOutSou/list.wxml-->
+<view class="main_v">
+  <view class="title_v">需要外包列表</view>
+  <view class="back_but_v" data-pageflag="{{comLogin}}" catchtap="goPage">{{backButSign}}</view>
+  <view class="no_data_v" wx:if="{{showNoDataView}}">{{noDataText}}</view>
+  <view class="list_v" wx:else>
+    <view class="item_v" wx:for-items="{{ddList}}">
+      <view class="row_v contactName_v">
+        <view class="key_v">联系人姓名</view>
+        <view class="val_v">{{item.contactName}}</view>
+      </view>
+      <view class="row_v phone_v">
+        <view class="key_v">电话</view>
+        <view class="val_v">{{item.phone}}</view>
+      </view>
+      <view class="row_v enginName_v">
+        <view class="key_v">工程名</view>
+        <view class="val_v">{{item.enginName}}</view>
+      </view>
+      <view class="row_v tradeName_v">
+        <view class="key_v">行业</view>
+        <view class="val_v" wx:if="{{item.tradeId==1}}">工业自动化系统集成</view>
+        <view class="val_v" wx:if="{{item.tradeId==2}}">环保工程</view>
+        <view class="val_v" wx:if="{{item.tradeId==3}}">设备制造</view>
+        <view class="val_v" wx:if="{{item.tradeId==4}}">监控安装</view>
+        <view class="val_v" wx:if="{{item.tradeId==5}}">工业软件</view>
+        <view class="val_v" wx:if="{{item.tradeId==6}}">化工行业</view>
+        <view class="val_v" wx:if="{{item.tradeId==7}}">电厂锅炉</view>
+        <view class="val_v" wx:if="{{item.tradeId==8}}">新能源新材料</view>
+      </view>
+      <view class="row_v createTime_v">
+        <view class="key_v">创建时间</view>
+        <view class="val_v">{{item.createTime}}</view>
+      </view>
+    </view>
+  </view>
+</view>

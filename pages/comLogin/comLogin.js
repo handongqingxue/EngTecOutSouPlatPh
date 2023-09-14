@@ -462,6 +462,11 @@ Page({
       url: '/pages/subSuc/subSuc',
     })
   },
+  goOSMPage:function(){
+    wx.redirectTo({
+      url: '/pages/outSouMana/select',
+    })
+  },
   goHomePage:function(){
     wx.redirectTo({
       url: '/pages/home/home',

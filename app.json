@@ -6,7 +6,9 @@
     "pages/outSouMana/proOutSou/new",
     "pages/subSuc/subSuc",
     "pages/index/index",
-    "pages/comLogin/comLogin"
+    "pages/comLogin/comLogin",
+    "pages/outSouMana/select",
+    "pages/outSouMana/needOutSou/list"
   ],
   "window": {
     "backgroundTextStyle": "light",
