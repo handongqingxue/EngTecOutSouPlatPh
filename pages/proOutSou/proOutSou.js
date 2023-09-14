@@ -9,6 +9,18 @@ Page({
    */
   data: {
     backButSign:'<',
+    showTradeOption:false,
+    tradeList:[
+      {value:"",text:"请选择"},
+      {value:"1",text:"工业自动化系统集成"},
+      {value:"2",text:"环保工程"},
+      {value:"3",text:"设备制造"},
+      {value:"4",text:"监控安装"},
+      {value:"5",text:"工业软件"},
+      {value:"6",text:"化工行业"},
+      {value:"7",text:"电厂锅炉"},
+      {value:"8",text:"新能源新材料"}
+    ],
     startDate:'',
     endDate:'',
     describePlaceholder:'请填写描述',
@@ -75,13 +87,31 @@ Page({
   onShareAppMessage() {
 
   },
+  // 点击下拉显示框
+  showTradeOption() {
+    proOutSouPage.setData({
+      showTradeOption: !proOutSouPage.data.showTradeOption,
+    });
+  },
+  // 点击下拉列表
+  selectTradeOption(e) {
+    let index = e.currentTarget.dataset.index; //获取点击的下拉列表的下标
+    let tradeList=proOutSouPage.data.tradeList;
+    let trade=tradeList[index];
+    console.log(index+","+trade.value+","+trade.text);
+    proOutSouPage.setData({
+      tradeSelectIndex: index,
+      tradeSelectId: trade.value,
+      showTradeOption: !proOutSouPage.data.showTradeOption
+    });
+  },
   checkNew:function(){
     if(proOutSouPage.checkContactName()){
       if(proOutSouPage.checkPhone()){
         if(proOutSouPage.checkArea()){
           if(proOutSouPage.checkProCount()){
-            if(proOutSouPage.checkOtherTrade()){
-              if(proOutSouPage.checkOtherSpeciality()){
+            if(proOutSouPage.checkTradeId()){
+              if(proOutSouPage.checkSpeciality()){
                 if(proOutSouPage.checkDescribe()){
                   if(proOutSouPage.checkStartDate()){
                     if(proOutSouPage.checkEndDate()){
@@ -103,8 +133,9 @@ Page({
     let area=proOutSouPage.data.area;
     let openId=wxUser.openId;
     let proCount=proOutSouPage.data.proCount;
+    let tradeSelectId=proOutSouPage.data.tradeSelectId;
     let otherTrade=proOutSouPage.data.otherTrade;
-    let otherSpeciality=proOutSouPage.data.otherSpeciality;
+    let speciality=proOutSouPage.data.speciality;
     let describe=proOutSouPage.data.describe;
     let startDate=proOutSouPage.data.startDate;
     let endDate=proOutSouPage.data.endDate;
@@ -113,15 +144,16 @@ Page({
     console.log("area==="+area)
     console.log("openId==="+openId)
     console.log("proCount==="+proCount)
+    console.log("tradeSelectId==="+tradeSelectId)
     console.log("otherTrade==="+otherTrade)
-    console.log("otherSpeciality==="+otherSpeciality)
+    console.log("speciality==="+speciality)
     console.log("describe==="+describe)
     console.log("startDate==="+startDate)
     console.log("endDate==="+endDate)
     //return false;
     wx.request({
       url: rootIP+"submitProOutSou",
-      data:{contactName:contactName,phone:phone,area:area,openId:openId,proCount:proCount,otherTrade:otherTrade,otherSpeciality:otherSpeciality,describe:describe,startDate:startDate,endDate:endDate},
+      data:{contactName:contactName,phone:phone,area:area,openId:openId,proCount:proCount,tradeId:tradeSelectId,otherTrade:otherTrade,speciality:speciality,describe:describe,startDate:startDate,endDate:endDate},
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
@@ -168,9 +200,9 @@ Page({
       let otherTrade=e.detail.value;
       proOutSouPage.setData({otherTrade:otherTrade});
     }
-    else if(e.currentTarget.id=="otherSpeciality_inp"){
-      let otherSpeciality=e.detail.value;
-      proOutSouPage.setData({otherSpeciality:otherSpeciality});
+    else if(e.currentTarget.id=="speciality_inp"){
+      let speciality=e.detail.value;
+      proOutSouPage.setData({speciality:speciality});
     }
     else if(e.currentTarget.id=="describe_inp"){
       let describe=e.detail.value;
@@ -240,6 +272,17 @@ Page({
       return true;
     }
   },
+  checkTradeId:function(){
+    let tradeSelectId=proOutSouPage.data.tradeSelectId;
+    if(tradeSelectId==null||tradeSelectId==""){
+      wx.showToast({
+        title: "请选择行业",
+      })
+	  	return false;
+    }
+    else
+      return true;
+  },
   focusOtherTrade:function(){
     let otherTrade=proOutSouPage.data.otherTrade;
     if(otherTrade=="其他行业不能为空"){
@@ -257,17 +300,16 @@ Page({
       return true;
     }
   },
-  focusOtherSpeciality:function(){
-    let otherSpeciality=proOutSouPage.data.otherSpeciality;
-    if(otherSpeciality=="其他特长不能为空"){
-      proOutSouPage.setData({otherSpeciality:''});
+  focusSpeciality:function(){
+    let speciality=proOutSouPage.data.speciality;
+    if(speciality=="特长不能为空"){
+      proOutSouPage.setData({speciality:''});
     }
   },
-  checkOtherSpeciality:function(){
-    let otherSpeciality=proOutSouPage.data.otherSpeciality;
-    console.log(otherSpeciality)
-    if(otherSpeciality==""||otherSpeciality==null||otherSpeciality=="其他特长不能为空"){
-      proOutSouPage.setData({otherSpeciality:'其他特长不能为空'});
+  checkSpeciality:function(){
+    let speciality=proOutSouPage.data.speciality;
+    if(speciality==""||speciality==null||speciality=="特长不能为空"){
+      proOutSouPage.setData({speciality:'特长不能为空'});
       return false;
     }
     else{
