@@ -32,7 +32,7 @@
     <view class="tit_v">06  行业</view>
     <view class="select_v">
       <view class='selected_text_v' catchtap='showTradeOption'>{{tradeList[tradeSelectIndex]==null?'请选择':tradeList[tradeSelectIndex].text}}</view>
-          <image class='select_img {{showTradeOption&&"select_img_rotate"}}' src='../../images/sanjiao.png'></image>
+          <image class='select_img {{showTradeOption&&"select_img_rotate"}}' src='../../../images/sanjiao.png'></image>
     </view>
     <view class='trade_option_list_v' style='height:{{showTradeOption?(tradeList.length>5?300:tradeList.length*30):0}}px;'>
       <view class='item_v' wx:for="{{tradeList}}" data-index="{{index}}" catchtap='selectTradeOption'>{{item.text}}</view>

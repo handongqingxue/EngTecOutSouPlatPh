@@ -2,8 +2,8 @@
   "pages": [
     "pages/home/home",
     "pages/logs/logs",
-    "pages/needOutSou/needOutSou",
-    "pages/proOutSou/proOutSou",
+    "pages/outSouMana/needOutSou/new",
+    "pages/outSouMana/proOutSou/new",
     "pages/subSuc/subSuc",
     "pages/index/index",
     "pages/comLogin/comLogin"

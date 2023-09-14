@@ -138,10 +138,10 @@ Page({
     console.log(pageFlag)
     switch (pageFlag) {
       case home.data.nos:
-        url+='needOutSou/needOutSou';
+        url+='outSouMana/needOutSou/new';
         break;
       case home.data.pos:
-        url+='proOutSou/proOutSou';
+        url+='outSouMana/proOutSou/new';
         break;
       case home.data.comLogin:
         url+='comLogin/comLogin';
