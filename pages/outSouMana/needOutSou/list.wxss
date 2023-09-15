@@ -134,33 +134,48 @@
 .main_v .list_v{
   width: 95%;
   margin: auto;
+
 }
+.main_v .list_v .tit_v,
 .main_v .list_v .item_v{
   width: 100%;
-  margin:10px auto 0;
+  margin:5px auto 0;
   background-color: #FFF;
-  padding: 10px 0 10px;
 }
-.main_v .list_v .item_v .row_v{
-  width: 90%;
-  margin-left:20px;
-}
-.main_v .list_v .item_v .row_v .key_v,
-.main_v .list_v .item_v .row_v .val_v{
-  width: 90%;
+.main_v .list_v .tit_v .key_v,
+.main_v .list_v .item_v .val_v{
   height: 30px;
   line-height: 30px;
+  font-size: 12px;
+  text-align: center;
 }
+.main_v .list_v .tit_v .post_v,
+.main_v .list_v .item_v .post_v{
+  width: 40%;
+  font-size: 10px;
+}
+.main_v .list_v .tit_v .needCount_v,
+.main_v .list_v .item_v .needCount_v{
+  width: 10%;
+  margin-top: -30px;
+  margin-left: 40%;
+}
+.main_v .list_v .tit_v .dayCount_v,
+.main_v .list_v .item_v .dayCount_v{
+  width: 10%;
+  margin-top: -30px;
+  margin-left: 53%;
+}
+.main_v .list_v .tit_v .but_list_v,
 .main_v .list_v .item_v .but_list_v{
-  width: 95%;
-  height: 40px;
-  margin: auto;
+  width: 30%;
+  margin-top: -30px;
+  margin-left: 68%;
 }
 .main_v .list_v .item_v .but_list_v .but_v{
   width: 30%;
   height: 30px;
   line-height: 30px;
-  margin-top: 10px;
   color: #FFF;
   text-align: center;
   background-color: #ff9205;

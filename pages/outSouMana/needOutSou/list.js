@@ -9,6 +9,7 @@ Page({
    */
   data: {
     backButSign:'<',
+    selectPageFlag:1,
     showDjckgdView:true,
     showPageView:false,
     showToolBarView:false,
@@ -192,4 +193,17 @@ Page({
       showTradeOption: !this.data.showTradeOption
     });
   },
+  goPage:function(e){
+    let pageFlag=e.currentTarget.dataset.pageflag;
+    let url="/pages/";
+    console.log(pageFlag)
+    switch (pageFlag) {
+      case listPage.data.selectPageFlag:
+        url+='outSouMana/select';
+        break;
+    }
+    wx.redirectTo({
+      url: url,
+    })
+  }
 })
