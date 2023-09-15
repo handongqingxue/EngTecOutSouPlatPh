@@ -15,6 +15,10 @@ Page({
     currentPage:1,
     pageSize:10,
     showNoDataView:false,
+    enginName:"",
+    tradeSelectId:"",
+    otherTrade:"",
+    speciality:'',
 
   },
 
@@ -31,7 +35,10 @@ Page({
    */
   onReady() {
     wxUser=wx.getStorageSync("wxUser");
-    listPage.getListData();
+    getApp().getTradeList(listPage);
+    setTimeout(() => {
+      listPage.getDdztSelectData();
+    }, 1000);
   },
 
   /**
@@ -100,14 +107,40 @@ Page({
       listPage.setData({showNoDataView:false});
     }
   },
+  getInputValue:function(e){
+    if(e.currentTarget.id=="enginName_inp"){
+      let enginName=e.detail.value;
+      listPage.setData({enginName:enginName});
+    }
+    else if(e.currentTarget.id=="otherTrade_inp"){
+      let otherTrade=e.detail.value;
+      listPage.setData({otherTrade:otherTrade});
+    }
+    else if(e.currentTarget.id=="speciality_inp"){
+      let speciality=e.detail.value;
+      listPage.setData({speciality:speciality});
+    }
+  },
+  resetToolBarData:function(){
+    listPage.setData({enginName:"",tradeSelectIndex:0,tradeSelectId:"",otherTrade:"",speciality:""});
+  },
+  getDdztSelectData:function(){
+    let tradeList=listPage.data.tradeList;
+    tradeList.unshift({id:"",name:"请选择"});
+    listPage.setData({tradeList:tradeList});
+    listPage.getListData();
+  },
   getListData:function(){
     let currentPage=listPage.data.currentPage;
     let pageSize=listPage.data.pageSize;
-    let ddh=listPage.data.ddh;
+    let enginName=listPage.data.enginName;
+    let tradeId=listPage.data.tradeSelectId;
+    let otherTrade=listPage.data.otherTrade;
+    let speciality=listPage.data.speciality;
     let openId=wxUser.openId;
     wx.request({
       url: rootIP+"getNOSListByOpenId",
-      data:{page:currentPage,rows:pageSize,ddh:ddh,openId:openId},
+      data:{page:currentPage,rows:pageSize,enginName:enginName,tradeId:tradeId,otherTrade:otherTrade,speciality:speciality,openId:openId},
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
@@ -117,16 +150,16 @@ Page({
         let status=data.status;
         console.log("status==="+status)
         let dataCount;
-        listPage.setData({ddList:[]});
+        listPage.setData({needOutSouList:[]});
         if(status=="ok"){
-          var ddList=data.list;
-          for(let i=0;i<ddList.length;i++){
-            let dsh=ddList[i];
-            let lxlx=dsh.lxlx;
-            //let lxlxMc=listPage.getLxlxMcById(lxlx);
-            //dsh.lxlxMc=lxlxMc;
+          var needOutSouList=data.list;
+          for(let i=0;i<needOutSouList.length;i++){
+            let needOutSou=needOutSouList[i];
+            let tradeId=needOutSou.tradeId;
+            let tradeName=getApp().getTradeNameById(listPage,tradeId);
+            needOutSou.tradeName=tradeName;
           }
-          listPage.setData({ddList:ddList});
+          listPage.setData({needOutSouList:needOutSouList});
           listPage.showNoDataView(false);
           listPage.setData({noDataText:""});
         }
@@ -141,4 +174,22 @@ Page({
       }
     })
   },
+  // 点击下拉显示框
+  showTradeOption() {
+    listPage.setData({
+      showTradeOption: !listPage.data.showTradeOption,
+    });
+  },
+  // 点击下拉列表
+  selectTradeOption(e) {
+    let index = e.currentTarget.dataset.index; //获取点击的下拉列表的下标
+    let tradeList=listPage.data.tradeList;
+    let ddzt=tradeList[index];
+    console.log(index+","+ddzt.id+","+ddzt.mc);
+    this.setData({
+      ddztSelectIndex: index,
+      ddztSelectId: ddzt.id,
+      showTradeOption: !this.data.showTradeOption
+    });
+  },
 })

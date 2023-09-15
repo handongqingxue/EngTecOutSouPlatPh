@@ -10,17 +10,6 @@ Page({
   data: {
     backButSign:'<',
     showTradeOption:false,
-    tradeList:[
-      {value:"",text:"请选择"},
-      {value:"1",text:"工业自动化系统集成"},
-      {value:"2",text:"环保工程"},
-      {value:"3",text:"设备制造"},
-      {value:"4",text:"监控安装"},
-      {value:"5",text:"工业软件"},
-      {value:"6",text:"化工行业"},
-      {value:"7",text:"电厂锅炉"},
-      {value:"8",text:"新能源新材料"}
-    ],
     startDate:'',
     endDate:'',
     describePlaceholder:'请填写描述',
@@ -44,6 +33,7 @@ Page({
    */
   onReady() {
     wxUser=wx.getStorageSync("wxUser");
+    getApp().getTradeList(proOutSouPage);
   },
 
   /**
@@ -98,10 +88,10 @@ Page({
     let index = e.currentTarget.dataset.index; //获取点击的下拉列表的下标
     let tradeList=proOutSouPage.data.tradeList;
     let trade=tradeList[index];
-    console.log(index+","+trade.value+","+trade.text);
+    console.log(index+","+trade.id+","+trade.name);
     proOutSouPage.setData({
       tradeSelectIndex: index,
-      tradeSelectId: trade.value,
+      tradeSelectId: trade.id,
       showTradeOption: !proOutSouPage.data.showTradeOption
     });
   },

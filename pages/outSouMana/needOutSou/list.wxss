@@ -1,8 +1,13 @@
 /* pages/outSouMana/needOutSou/list.wxss */
-.main_v{
+.tool_bar_v{
   width: 100%;
-  background-color: #F8F8F8;
+  height: 100%;
+  background-color: #fff;
+  position: fixed;
+  overflow-y: auto;
+  z-index: 1;
 }
+.tool_bar_v .title_v,
 .main_v .title_v{
   width: 100%;
   height: 40px;
@@ -12,11 +17,113 @@
   font-weight: bold;
   background-color: #F8F8F8;
 }
+.tool_bar_v .back_but_v,
 .main_v .back_but_v{
   height: 40px;
   line-height: 40px;
   margin-top: -40px;
   margin-left: 10px;
+}
+.tool_bar_v .enginName_v,
+.tool_bar_v .otherTrade_v,
+.tool_bar_v .speciality_v{
+  width:100%;
+  height:50px;
+  line-height:50px;
+}
+.tool_bar_v .enginName_v .enginName_span,
+.tool_bar_v .trade_v .trade_span,
+.tool_bar_v .otherTrade_v .otherTrade_span,
+.tool_bar_v .speciality_v .speciality_span{
+  margin-left:10px;
+}
+.tool_bar_v .enginName_v .enginName_inp,
+.tool_bar_v .otherTrade_v .otherTrade_inp,
+.tool_bar_v .speciality_v .speciality_inp{
+  width:180px;
+  margin-top:-35px;
+  margin-left:120px;
+  border: #eee solid 1px;
+}
+
+.tool_bar_v .trade_v .trade_select_v{
+  width: 150px;
+  height: 30px;
+  margin-top: -25px;
+  margin-left: 120px;
+  background-color: #fff;
+  border: #eee solid 1px;
+}
+.tool_bar_v .trade_v .trade_select_v .selected_text_v {
+  width: 120px;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 10px;
+  font-size: 15px;
+  background-color: #0f0;
+}
+.tool_bar_v .trade_v .trade_select_v .select_img {
+  width: 17px;
+  height: 17px;
+  float: right;
+  margin-top: -25px;
+  margin-right: 3px;
+}
+.tool_bar_v .trade_v .trade_select_v .select_img_rotate {
+  transform: rotate(180deg);
+}
+.tool_bar_v .trade_v .trade_option_list_v{
+  width: 150px;
+  margin-top: 1px;
+  margin-left: 120px;
+  background-color: #eee;
+  overflow-y: auto;
+  position: absolute;
+  z-index: 3;
+}
+.tool_bar_v .trade_v .trade_option_list_v .item_v{
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 10px;
+  background-color: #0f0;
+}
+.space2_v{
+  width: 100%;
+  height: 60px;
+}
+.tool_bar_v .bottom_v{
+  width: 100%;
+  height: 50px;
+  background-color: #fff;
+  bottom: 0;
+  position: fixed;
+}
+.tool_bar_v .bottom_v .but_list_v,
+.main_v .bottom_v .but_list_v{
+  width: 95%;
+  margin: auto;
+}
+
+.tool_bar_v .bottom_v .but_list_v .but_v,
+.main_v .bottom_v .but_list_v .but_v{
+  width: 45%;
+  height: 30px;
+  line-height: 30px;
+  margin-top: 10px;
+  color: #FFF;
+  text-align: center;
+  background-color: #ff9205;
+  border-radius:3px;
+}
+.tool_bar_v .bottom_v .but_list_v .reset_but_v{
+  float: right;
+  margin-top:-32px;
+}
+
+.main_v{
+  width: 100%;
+  background-color: #F8F8F8;
 }
 .main_v .no_data_v{
   width: 100%;
@@ -43,4 +150,82 @@
   width: 90%;
   height: 30px;
   line-height: 30px;
+}
+.main_v .list_v .item_v .but_list_v{
+  width: 95%;
+  height: 40px;
+  margin: auto;
+}
+.main_v .list_v .item_v .but_list_v .but_v{
+  width: 30%;
+  height: 30px;
+  line-height: 30px;
+  margin-top: 10px;
+  color: #FFF;
+  text-align: center;
+  background-color: #ff9205;
+  border-radius:3px;
+}
+.main_v .list_v .item_v .but_list_v .edit_but_v{
+  margin-left:33%;
+  margin-top:-30px;
+}
+.main_v .list_v .item_v .but_list_v .delete_but_v{
+  margin-left:66%;
+  margin-top:-30px;
+}
+.space1_v{
+  width: 100%;
+  height: 90px;
+}
+
+.main_v .bottom_v{
+  width: 100%;
+  height: 80px;
+  background-color: #F8F8F8;
+  bottom: 0;
+  position: fixed;
+}
+.main_v .bottom_v .click_show_more_v{
+  height: 25px;
+  line-height: 25px;
+  margin-left:20px;
+  color:#1473C3;
+  font-size:12px;
+}
+.main_v .bottom_v .page_v{
+  width: 100%;
+  height: 25px;
+  line-height: 25px;
+  font-size: 12px;
+  background-color: #F8F8F8;
+}
+.main_v .bottom_v .page_v .data_count_v{
+  margin-left: 10px;
+}
+.main_v .bottom_v .page_v .pre_page_v{
+  width: 50px;
+  height: 20px;
+  margin-top: -25px;
+  margin-left: 80px;
+}
+.main_v .bottom_v .page_v .page_count_v{
+  margin-top: -20px;
+  margin-left:150px;
+}
+.main_v .bottom_v .page_v .curr_page_text{
+  color: #027999;
+}
+.main_v .bottom_v .page_v .next_page_v{
+  width: 50px;
+  height: 20px;
+  float: right;
+  margin-top: -25px;
+  margin-right: 10px;
+}
+.main_v .bottom_v .page_v .click_v{
+  color: #000;
+}
+.main_v .bottom_v .page_v .unClick_v{
+  color: #666;
 }

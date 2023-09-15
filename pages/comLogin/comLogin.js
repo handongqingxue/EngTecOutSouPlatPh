@@ -46,6 +46,7 @@ Page({
    */
   onReady() {
     wxUser=wx.getStorageSync("wxUser");
+    getApp().getTradeList(comLoginPage);
     comLoginPage.checkCompIfExist();
   },
 

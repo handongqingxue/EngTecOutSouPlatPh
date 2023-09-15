@@ -21,4 +21,33 @@ App({
   getRootIP:function(){
     return rootIP;
   },
+  getTradeList:function(page){
+    wx.request({
+      url: rootIP+"initTradeCBBData",
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      success: function (res) {
+        let data=res.data;
+        let message=data.message;
+        if(message=="ok"){
+          let tradeList=data.tradeList;
+          page.setData({tradeList:tradeList});
+        }
+      }
+    })
+  },
+  getTradeNameById:function(page,tradeId){
+    var tradeName;
+    var tradeList=page.data.tradeList;
+    for(var i=0;i<tradeList.length;i++){
+      var trade=tradeList[i];
+      if(tradeId==trade.id){
+        tradeName=trade.name;
+        break;
+      }
+    }
+    return tradeName;
+  },
 })
