@@ -1,4 +1,4 @@
-// pages/outSouMana/needOutSou/list.js
+// pages/outSouMana/proOutSou/list.js
 var listPage;
 var rootIP;
 var wxUser;
@@ -10,8 +10,6 @@ Page({
   data: {
     backButSign:'<',
     selectPageFlag:1,
-    detailPageFlag:2,
-    editPageFlag:3,
     showNoDataView:false,
   },
 
@@ -84,7 +82,7 @@ Page({
   getListData:function(){
     let openId=wxUser.openId;
     wx.request({
-      url: rootIP+"getNOSListByOpenId",
+      url: rootIP+"getPOSListByOpenId",
       data:{openId:openId},
       method: 'POST',
       header: {
@@ -94,10 +92,16 @@ Page({
         let data=res.data;
         let status=data.status;
         console.log("status==="+status)
-        listPage.setData({needOutSouList:[]});
+        listPage.setData({proOutSouList:[]});
         if(status=="ok"){
-          var needOutSouList=data.list;
-          listPage.setData({needOutSouList:needOutSouList});
+          var proOutSouList=data.list;
+          for(let i=0;i<proOutSouList.length;i++){
+            let proOutSou=proOutSouList[i];
+            let postId=proOutSou.postId;
+            let postName=getApp().getPostNameById(listPage,postId);
+            proOutSou.postName=postName;
+          }
+          listPage.setData({proOutSouList:proOutSouList});
           listPage.showNoDataView(false);
           listPage.setData({noDataText:""});
         }
@@ -115,13 +119,6 @@ Page({
     switch (pageFlag) {
       case listPage.data.selectPageFlag:
         url+='outSouMana/select';
-        break;
-      case listPage.data.detailPageFlag:
-        url+='outSouMana/needOutSou/detail';
-        break;
-      case listPage.data.editPageFlag:
-        let id=e.currentTarget.dataset.id;
-        url+='outSouMana/needOutSou/edit?id='+id;
         break;
     }
     wx.redirectTo({

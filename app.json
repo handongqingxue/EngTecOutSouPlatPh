@@ -8,7 +8,9 @@
     "pages/index/index",
     "pages/comLogin/comLogin",
     "pages/outSouMana/select",
-    "pages/outSouMana/needOutSou/list"
+    "pages/outSouMana/needOutSou/list",
+    "pages/outSouMana/proOutSou/list",
+    "pages/outSouMana/needOutSou/edit"
   ],
   "window": {
     "backgroundTextStyle": "light",

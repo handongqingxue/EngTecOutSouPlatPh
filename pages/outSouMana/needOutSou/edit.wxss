@@ -1,4 +1,4 @@
-/* pages/needOutSou/needOutSou.wxss */
+/* pages/outSouMana/needOutSou/edit.wxss */
 .main_v{
   width: 100%;
   background-color: #F8F8F8;
@@ -32,15 +32,14 @@
   margin: auto;
   font-size: 13px;
 }
-.main_v .companyName_v,
-.main_v .trade_v,
-.main_v .otherTrade_v,
-.main_v .post_v,
+.main_v .contactName_v,
+.main_v .phone_v,
+.main_v .area_v,
 .main_v .enginName_v,
 .main_v .needCount_v,
-.main_v .speciality_v,
-.main_v .contactName_v,
-.main_v .phone_v{
+.main_v .trade_v,
+.main_v .otherTrade_v,
+.main_v .speciality_v{
   width: 100%;
   height: 85px;
   margin:10px auto;
@@ -62,30 +61,28 @@
   background-color: #FFF;
   padding-top: 1px;
 }
-.main_v .companyName_v .tit_v,
-.main_v .trade_v .select_v,
-.main_v .otherTrade_v .tit_v,
-.main_v .post_v .tit_v,
-.main_v .enginName_v .tit_v,
-.main_v .needCount_v .tit_v,
-.main_v .speciality_v .tit_v,
 .main_v .contactName_v .tit_v,
 .main_v .phone_v .tit_v,
+.main_v .area_v .tit_v,
+.main_v .enginName_v .tit_v,
+.main_v .needCount_v .tit_v,
 .main_v .trade_v .tit_v,
+.main_v .otherTrade_v .tit_v,
+.main_v .speciality_v .tit_v,
 .main_v .describe_v .tit_v,
 .main_v .startDate_v .tit_v,
 .main_v .endDate_v .tit_v{
   width: 90%;
   margin:10px auto 0;
 }
-.main_v .companyName_v .inp_v,
-.main_v .otherTrade_v .inp_v,
-.main_v .post_v .inp_v,
-.main_v .enginName_v .inp_v,
-.main_v .needCount_v .inp_v,
-.main_v .speciality_v .inp_v,
 .main_v .contactName_v .inp_v,
 .main_v .phone_v .inp_v,
+.main_v .area_v .inp_v,
+.main_v .enginName_v .inp_v,
+.main_v .needCount_v .inp_v,
+.main_v .trade_v .select_v,
+.main_v .otherTrade_v .inp_v,
+.main_v .speciality_v .inp_v,
 .main_v .startDate_v .picker_v,
 .main_v .endDate_v .picker_v{
   width: 90%;
@@ -95,15 +92,14 @@
   width: 90%;
   margin:10px auto 0;
 }
-.main_v .companyName_v .inp_v input,
-.main_v .trade_v .select_v .selected_text_v,
-.main_v .otherTrade_v .inp_v input,
-.main_v .post_v .inp_v input,
+.main_v .contactName_v .inp_v input,
+.main_v .phone_v .inp_v input,
+.main_v .area_v .inp_v input,
 .main_v .enginName_v .inp_v input,
 .main_v .needCount_v .inp_v input,
-.main_v .speciality_v .inp_v input,
-.main_v .contactName_v .inp_v input,
-.main_v .phone_v .inp_v input{
+.main_v .trade_v .select_v .selected_text_v,
+.main_v .otherTrade_v .inp_v input,
+.main_v .speciality_v .inp_v input{
   width: 90%;
   height: 30px;
   font-size: 12px;

@@ -1,4 +1,4 @@
-/* pages/outSouMana/needOutSou/list.wxss */
+/* pages/outSouMana/proOutSou/list.wxss */
 .main_v{
   width: 100%;
   background-color: #F8F8F8;
@@ -49,8 +49,8 @@
   text-align: left;
   margin-left: 8px;
 }
-.main_v .list_v .tit_v .needCount_v,
-.main_v .list_v .item_v .needCount_v{
+.main_v .list_v .tit_v .proCount_v,
+.main_v .list_v .item_v .proCount_v{
   width: 10%;
   margin-top: -30px;
   margin-left: 35%;

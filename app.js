@@ -50,33 +50,17 @@ App({
     }
     return tradeName;
   },
-  getPostList:function(page){
-    wx.request({
-      url: rootIP+"initPostCBBData",
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-      },
-      success: function (res) {
-        let data=res.data;
-        let message=data.message;
-        if(message=="ok"){
-          let postList=data.postList;
-          page.setData({postList:postList});
-        }
-      }
-    })
-  },
-  getPostNameById:function(page,postId){
-    var postName;
-    var postList=page.data.postList;
-    for(var i=0;i<postList.length;i++){
-      var post=postList[i];
-      if(postId==post.id){
-        postName=post.name;
+  getTradeIndexInListById:function(page,tradeId){
+    let tradeSelectIndex;
+    let tradeList=page.data.tradeList;
+    //console.log(tradeList)
+    for(let i=0;i<tradeList.length;i++){
+      let trade=tradeList[i];
+      if(tradeId==trade.id){
+        tradeSelectIndex=i;
         break;
       }
     }
-    return postName;
+    return tradeSelectIndex;
   },
 })
