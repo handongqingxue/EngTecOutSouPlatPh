@@ -4,38 +4,14 @@
   <view class="back_but_v" catchtap="goPage">{{backButSign}}</view>
   <view class="thanks_tit_v">您好，感谢您使用工程外包平台</view>
   <view class="thanks_cont_v">如果您想成为代理商，请您填写以下内容。我们将会在1-3个工作日内联系您。</view>
-  <view class="contactName_v">
-    <view class="tit_v">01  请问如何称呼您？</view>
+  <view class="companyName_v">
+    <view class="tit_v">01  公司名称</view>
     <view class="inp_v">
-      <input id="contactName_inp" type="text" placeholder="请填写您的姓名，方便我们更好的与您沟通" value="{{contactName}}" bindfocus="focusContactName" bindblur="checkContactName" bindinput="getInputValue"/>
-    </view>
-  </view>
-  <view class="phone_v">
-    <view class="tit_v">02  您的联系方式</view>
-    <view class="inp_v">
-      <input id="phone_inp" type="text" placeholder="仅用于我们工作人员联系您，请放心填写" value="{{phone}}" bindfocus="focusPhone" bindblur="checkPhone" bindinput="getInputValue"/>
-    </view>
-  </view>
-  <view class="area_v">
-    <view class="tit_v">03  您所在的地区</view>
-    <view class="inp_v">
-      <input id="area_inp" type="text" placeholder="请填写省/市/区" value="{{area}}" bindfocus="focusArea" bindblur="checkArea" bindinput="getInputValue"/>
-    </view>
-  </view>
-  <view class="enginName_v">
-    <view class="tit_v">04  您所实施的工程名</view>
-    <view class="inp_v">
-      <input id="enginName_inp" type="text" placeholder="请填写工程名" value="{{enginName}}" bindfocus="focusEnginName" bindblur="checkEnginName" bindinput="getInputValue"/>
-    </view>
-  </view>
-  <view class="needCount_v">
-    <view class="tit_v">05  您的工程所需人数</view>
-    <view class="inp_v">
-      <input id="needCount_inp" type="number" placeholder="请填写工程所需人数" value="{{needCount}}" bindinput="getInputValue"/>
+      <input id="companyName_inp" type="text" placeholder="请输入公司名称" value="{{companyName}}" bindfocus="focusCompanyName" bindblur="checkCompanyName" bindinput="getInputValue"/>
     </view>
   </view>
   <view class="trade_v">
-    <view class="tit_v">06  行业</view>
+    <view class="tit_v">02  行业</view>
     <view class="select_v">
       <view class='selected_text_v' catchtap='showTradeOption'>{{tradeList[tradeSelectIndex]==null?'请选择':tradeList[tradeSelectIndex].name}}</view>
           <image class='select_img {{showTradeOption&&"select_img_rotate"}}' src='../../../images/sanjiao.png'></image>
@@ -45,36 +21,66 @@
     </view>
   </view>
   <view class="otherTrade_v">
-    <view class="tit_v">07  其他行业</view>
+    <view class="tit_v">03  其他行业</view>
     <view class="inp_v">
       <input id="otherTrade_inp" type="text" placeholder="请填写其他行业" value="{{otherTrade}}" bindinput="getInputValue"/>
     </view>
   </view>
+  <view class="post_v">
+    <view class="tit_v">04  岗位名称</view>
+    <view class="inp_v">
+      <input id="post_inp" type="text" placeholder="请输入岗位名称" value="{{post}}" bindfocus="focusPost" bindblur="checkPost" bindinput="getInputValue"/>
+    </view>
+  </view>
+  <view class="enginName_v">
+    <view class="tit_v">05  您所实施的工程名</view>
+    <view class="inp_v">
+      <input id="enginName_inp" type="text" placeholder="请填写工程名" value="{{enginName}}" bindfocus="focusEnginName" bindblur="checkEnginName" bindinput="getInputValue"/>
+    </view>
+  </view>
+  <view class="needCount_v">
+    <view class="tit_v">06  您的工程所需人数</view>
+    <view class="inp_v">
+      <input id="needCount_inp" type="number" placeholder="请填写工程所需人数" value="{{needCount}}" bindinput="getInputValue"/>
+    </view>
+  </view>
   <view class="speciality_v">
-    <view class="tit_v">08  特长</view>
+    <view class="tit_v">07  特长</view>
     <view class="inp_v">
       <input id="speciality_inp" type="text" placeholder="请填写特长" value="{{speciality}}" bindfocus="focusSpeciality" bindblur="checkSpeciality" bindinput="getInputValue"/>
     </view>
   </view>
   <view class="describe_v">
-    <view class="tit_v">09  描述</view>
+    <view class="tit_v">08  描述</view>
     <view class="ta_v">
       <textarea id="describe_inp" placeholder="{{describePlaceholder}}" bindfocus="focusDescribe" bindblur="checkDescribe" bindinput="getInputValue">{{describe}}</textarea>
     </view>
   </view>
   <view class="startDate_v">
-    <view class="tit_v">10  开始日期</view>
+    <view class="tit_v">09  开始日期</view>
     <view class="picker_v">
       <picker mode="date" bindcancel="pickerStartDateCancel" bindchange="pickerStartDateChange">{{startDate==''?startDatePlaceholder:startDate}}</picker>
     </view>
   </view>
   <view class="endDate_v">
-    <view class="tit_v">11  结束日期</view>
+    <view class="tit_v">10  结束日期</view>
     <view class="picker_v">
       <picker mode="date" bindcancel="pickerEndDateCancel" bindchange="pickerEndDateChange">{{endDate==''?endDatePlaceholder:endDate}}</picker>
     </view>
   </view>
-  <view class="submit_but_v" data-flag="{{true}}" catchtap="checkNew" wx:if="{{showSubmitBut}}">提交</view>
+  <view class="contactName_v">
+    <view class="tit_v">11  联系人</view>
+    <view class="inp_v">
+      <input id="contactName_inp" type="text" placeholder="请输入联系人姓名" value="{{contactName}}" bindfocus="focusContactName" bindblur="checkContactName" bindinput="getInputValue"/>
+    </view>
+  </view>
+  <view class="phone_v">
+    <view class="tit_v">12  联系方式</view>
+    <view class="inp_v">
+      <input id="phone_inp" type="text" placeholder="请输入联系方式" value="{{phone}}" bindfocus="focusPhone" bindblur="checkPhone" bindinput="getInputValue"/>
+    </view>
+  </view>
+  <view class="submit_but_v" data-flag="{{true}}" catchtap="checkEdit" wx:if="{{showSubmitBut}}">提交</view>
   <view class="submiting_but_v" wx:if="{{showSubmitingBut}}">提交中...</view>
   <view class="submited_but_v" wx:if="{{showSubmitedBut}}">已提交</view>
 </view>

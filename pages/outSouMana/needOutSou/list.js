@@ -28,7 +28,6 @@ Page({
    */
   onReady() {
     wxUser=wx.getStorageSync("wxUser");
-    getApp().getPostList(listPage);
     listPage.getListData();
   },
 
