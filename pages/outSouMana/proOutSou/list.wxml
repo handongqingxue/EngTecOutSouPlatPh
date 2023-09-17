@@ -12,13 +12,13 @@
       <view class="key_v but_list_v">操作</view>
     </view>
     <view class="item_v" wx:for-items="{{proOutSouList}}">
-      <view class="val_v post_v">{{item.postName}}</view>
+      <view class="val_v post_v">{{item.post}}</view>
       <view class="val_v proCount_v">{{item.proCount}}</view>
       <view class="val_v startDate_v">{{item.startDate}}</view>
       <view class="val_v dayCount_v">{{item.dayCount}}</view>
       <view class="val_v but_list_v">
-        <view class="but_v detail_but_v" data-id="{{item.id}}" catchtap="goDetailPage">详</view>
-        <view class="but_v edit_but_v" data-id="{{item.id}}" catchtap="goEditPage">编</view>
+        <view class="but_v detail_but_v" data-id="{{item.id}}" data-pageflag="{{detailPageFlag}}"catchtap="goDetailPage">详</view>
+        <view class="but_v edit_but_v" data-id="{{item.id}}" data-pageflag="{{editPageFlag}}" catchtap="goPage">编</view>
         <view class="but_v delete_but_v" data-id="{{item.id}}" catchtap="deleteById">删</view>
       </view>
     </view>

@@ -10,7 +10,8 @@
     "pages/outSouMana/select",
     "pages/outSouMana/needOutSou/list",
     "pages/outSouMana/proOutSou/list",
-    "pages/outSouMana/needOutSou/edit"
+    "pages/outSouMana/needOutSou/edit",
+    "pages/outSouMana/proOutSou/edit"
   ],
   "window": {
     "backgroundTextStyle": "light",

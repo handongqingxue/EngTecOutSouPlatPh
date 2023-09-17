@@ -10,6 +10,8 @@ Page({
   data: {
     backButSign:'<',
     selectPageFlag:1,
+    detailPageFlag:2,
+    editPageFlag:3,
     showNoDataView:false,
   },
 
@@ -26,7 +28,6 @@ Page({
    */
   onReady() {
     wxUser=wx.getStorageSync("wxUser");
-    getApp().getPostList(listPage);
     listPage.getListData();
   },
 
@@ -95,12 +96,6 @@ Page({
         listPage.setData({proOutSouList:[]});
         if(status=="ok"){
           var proOutSouList=data.list;
-          for(let i=0;i<proOutSouList.length;i++){
-            let proOutSou=proOutSouList[i];
-            let postId=proOutSou.postId;
-            let postName=getApp().getPostNameById(listPage,postId);
-            proOutSou.postName=postName;
-          }
           listPage.setData({proOutSouList:proOutSouList});
           listPage.showNoDataView(false);
           listPage.setData({noDataText:""});
@@ -119,6 +114,13 @@ Page({
     switch (pageFlag) {
       case listPage.data.selectPageFlag:
         url+='outSouMana/select';
+        break;
+      case listPage.data.detailPageFlag:
+        url+='outSouMana/proOutSou/detail';
+        break;
+      case listPage.data.editPageFlag:
+        let id=e.currentTarget.dataset.id;
+        url+='outSouMana/proOutSou/edit?id='+id;
         break;
     }
     wx.redirectTo({
