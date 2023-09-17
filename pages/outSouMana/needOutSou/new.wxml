@@ -57,7 +57,7 @@
     </view>
   </view>
   <view class="startDate_v">
-    <view class="tit_v">9  开始日期</view>
+    <view class="tit_v">09  开始日期</view>
     <view class="picker_v">
       <picker mode="date" bindcancel="pickerStartDateCancel" bindchange="pickerStartDateChange">{{startDate==''?startDatePlaceholder:startDate}}</picker>
     </view>
@@ -75,9 +75,9 @@
     </view>
   </view>
   <view class="phone_v">
-    <view class="tit_v">12  您的联系方式</view>
+    <view class="tit_v">12  联系方式</view>
     <view class="inp_v">
-      <input id="phone_inp" type="text" placeholder="仅用于我们工作人员联系您，请放心填写" value="{{phone}}" bindfocus="focusPhone" bindblur="checkPhone" bindinput="getInputValue"/>
+      <input id="phone_inp" type="text" placeholder="请输入联系方式" value="{{phone}}" bindfocus="focusPhone" bindblur="checkPhone" bindinput="getInputValue"/>
     </view>
   </view>
   <view class="submit_but_v" data-flag="{{true}}" catchtap="checkNew" wx:if="{{showSubmitBut}}">提交</view>

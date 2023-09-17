@@ -63,31 +63,31 @@
   padding-top: 1px;
 }
 .main_v .companyName_v .tit_v,
-.main_v .trade_v .select_v,
+.main_v .trade_v .tit_v,
 .main_v .otherTrade_v .tit_v,
 .main_v .post_v .tit_v,
 .main_v .enginName_v .tit_v,
 .main_v .needCount_v .tit_v,
 .main_v .speciality_v .tit_v,
-.main_v .contactName_v .tit_v,
-.main_v .phone_v .tit_v,
-.main_v .trade_v .tit_v,
 .main_v .describe_v .tit_v,
 .main_v .startDate_v .tit_v,
-.main_v .endDate_v .tit_v{
+.main_v .endDate_v .tit_v,
+.main_v .contactName_v .tit_v,
+.main_v .phone_v .tit_v{
   width: 90%;
   margin:10px auto 0;
 }
 .main_v .companyName_v .inp_v,
+.main_v .trade_v .select_v,
 .main_v .otherTrade_v .inp_v,
 .main_v .post_v .inp_v,
 .main_v .enginName_v .inp_v,
 .main_v .needCount_v .inp_v,
 .main_v .speciality_v .inp_v,
-.main_v .contactName_v .inp_v,
-.main_v .phone_v .inp_v,
 .main_v .startDate_v .picker_v,
-.main_v .endDate_v .picker_v{
+.main_v .endDate_v .picker_v,
+.main_v .contactName_v .inp_v,
+.main_v .phone_v .inp_v{
   width: 90%;
   margin:10px auto 0;
 }

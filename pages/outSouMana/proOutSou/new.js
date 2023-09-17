@@ -1,5 +1,5 @@
 // pages/proOutSou/proOutSou.js
-var proOutSouPage;
+var posNewPage;
 var rootIP;
 var wxUser;
 Page({
@@ -24,7 +24,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    proOutSouPage=this;
+    posNewPage=this;
     rootIP=getApp().getRootIP();
   },
 
@@ -33,7 +33,7 @@ Page({
    */
   onReady() {
     wxUser=wx.getStorageSync("wxUser");
-    getApp().getTradeList(proOutSouPage);
+    getApp().getTradeList(posNewPage);
   },
 
   /**
@@ -79,33 +79,35 @@ Page({
   },
   // 点击下拉显示框
   showTradeOption() {
-    proOutSouPage.setData({
-      showTradeOption: !proOutSouPage.data.showTradeOption,
+    posNewPage.setData({
+      showTradeOption: !posNewPage.data.showTradeOption,
     });
   },
   // 点击下拉列表
   selectTradeOption(e) {
     let index = e.currentTarget.dataset.index; //获取点击的下拉列表的下标
-    let tradeList=proOutSouPage.data.tradeList;
+    let tradeList=posNewPage.data.tradeList;
     let trade=tradeList[index];
     console.log(index+","+trade.id+","+trade.name);
-    proOutSouPage.setData({
+    posNewPage.setData({
       tradeSelectIndex: index,
       tradeSelectId: trade.id,
-      showTradeOption: !proOutSouPage.data.showTradeOption
+      showTradeOption: !posNewPage.data.showTradeOption
     });
   },
   checkNew:function(){
-    if(proOutSouPage.checkContactName()){
-      if(proOutSouPage.checkPhone()){
-        if(proOutSouPage.checkArea()){
-          if(proOutSouPage.checkProCount()){
-            if(proOutSouPage.checkTradeId()){
-              if(proOutSouPage.checkSpeciality()){
-                if(proOutSouPage.checkDescribe()){
-                  if(proOutSouPage.checkStartDate()){
-                    if(proOutSouPage.checkEndDate()){
-                      proOutSouPage.newProOutSou();
+    if(posNewPage.checkCompanyName()){
+      if(posNewPage.checkTradeId()){
+        if(posNewPage.checkPost()){
+          if(posNewPage.checkProCount()){
+            if(posNewPage.checkSpeciality()){
+              if(posNewPage.checkDescribe()){
+                if(posNewPage.checkStartDate()){
+                  if(posNewPage.checkEndDate()){
+                    if(posNewPage.checkContactName()){
+                      if(posNewPage.checkPhone()){
+                        posNewPage.newProOutSou();
+                      }
                     }
                   }
                 }
@@ -117,33 +119,35 @@ Page({
     }
   },
   newProOutSou:function(){
-    proOutSouPage.saving(true);
-    let contactName=proOutSouPage.data.contactName;
-    let phone=proOutSouPage.data.phone;
-    let area=proOutSouPage.data.area;
+    posNewPage.saving(true);
+    let companyName=posNewPage.data.companyName;
+    let tradeSelectId=posNewPage.data.tradeSelectId;
+    let otherTrade=posNewPage.data.otherTrade;
+    let post=posNewPage.data.post;
+    let proCount=posNewPage.data.proCount;
+    let speciality=posNewPage.data.speciality;
+    let describe=posNewPage.data.describe;
+    let startDate=posNewPage.data.startDate;
+    let endDate=posNewPage.data.endDate;
+    let contactName=posNewPage.data.contactName;
+    let phone=posNewPage.data.phone;
     let openId=wxUser.openId;
-    let proCount=proOutSouPage.data.proCount;
-    let tradeSelectId=proOutSouPage.data.tradeSelectId;
-    let otherTrade=proOutSouPage.data.otherTrade;
-    let speciality=proOutSouPage.data.speciality;
-    let describe=proOutSouPage.data.describe;
-    let startDate=proOutSouPage.data.startDate;
-    let endDate=proOutSouPage.data.endDate;
-    console.log("contactName==="+contactName)
-    console.log("phone==="+phone)
-    console.log("area==="+area)
-    console.log("openId==="+openId)
-    console.log("proCount==="+proCount)
+    console.log("companyName==="+companyName)
     console.log("tradeSelectId==="+tradeSelectId)
     console.log("otherTrade==="+otherTrade)
+    console.log("post==="+post)
+    console.log("proCount==="+proCount)
     console.log("speciality==="+speciality)
     console.log("describe==="+describe)
     console.log("startDate==="+startDate)
     console.log("endDate==="+endDate)
+    console.log("contactName==="+contactName)
+    console.log("phone==="+phone)
+    console.log("openId==="+openId)
     //return false;
     wx.request({
       url: rootIP+"submitProOutSou",
-      data:{contactName:contactName,phone:phone,area:area,openId:openId,proCount:proCount,tradeId:tradeSelectId,otherTrade:otherTrade,speciality:speciality,describe:describe,startDate:startDate,endDate:endDate},
+      data:{companyName:companyName,tradeId:tradeSelectId,otherTrade:otherTrade,post:post,proCount:proCount,speciality:speciality,describe:describe,startDate:startDate,endDate:endDate,contactName:contactName,phone:phone,openId:openId},
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
@@ -153,12 +157,12 @@ Page({
         let message=data.message;
         console.log("message==="+message)
         if(message=="ok"){
-          proOutSouPage.saving(false);
+          posNewPage.saving(false);
           wx.showToast({
             title: data.info,
           })
           setTimeout(() => {
-            proOutSouPage.goSubSucPage();
+            posNewPage.goSubSucPage();
           }, 1000);
         }
         else{
@@ -170,79 +174,94 @@ Page({
     })
   },
   getInputValue:function(e){
-    if(e.currentTarget.id=="contactName_inp"){
-      let contactName=e.detail.value;
-      proOutSouPage.setData({contactName:contactName});
-    }
-    else if(e.currentTarget.id=="phone_inp"){
-      let phone=e.detail.value;
-      proOutSouPage.setData({phone:phone});
-    }
-    else if(e.currentTarget.id=="area_inp"){
-      let area=e.detail.value;
-      proOutSouPage.setData({area:area});
-    }
-    else if(e.currentTarget.id=="proCount_inp"){
-      let proCount=e.detail.value;
-      proOutSouPage.setData({proCount:proCount});
+    if(e.currentTarget.id=="companyName_inp"){
+      let companyName=e.detail.value;
+      posNewPage.setData({companyName:companyName});
     }
     else if(e.currentTarget.id=="otherTrade_inp"){
       let otherTrade=e.detail.value;
-      proOutSouPage.setData({otherTrade:otherTrade});
+      posNewPage.setData({otherTrade:otherTrade});
+    }
+    else if(e.currentTarget.id=="post_inp"){
+      let post=e.detail.value;
+      posNewPage.setData({post:post});
+    }
+    else if(e.currentTarget.id=="proCount_inp"){
+      let proCount=e.detail.value;
+      posNewPage.setData({proCount:proCount});
     }
     else if(e.currentTarget.id=="speciality_inp"){
       let speciality=e.detail.value;
-      proOutSouPage.setData({speciality:speciality});
+      posNewPage.setData({speciality:speciality});
     }
     else if(e.currentTarget.id=="describe_inp"){
       let describe=e.detail.value;
-      proOutSouPage.setData({describe:describe});
+      posNewPage.setData({describe:describe});
+    }
+    else if(e.currentTarget.id=="contactName_inp"){
+      let contactName=e.detail.value;
+      posNewPage.setData({contactName:contactName});
+    }
+    else if(e.currentTarget.id=="phone_inp"){
+      let phone=e.detail.value;
+      posNewPage.setData({phone:phone});
     }
   },
-  focusContactName:function(){
-    let contactName=proOutSouPage.data.contactName;
-    if(contactName=="姓名不能为空"){
-      proOutSouPage.setData({contactName:''});
+  focusCompanyName:function(){
+    let companyName=posNewPage.data.companyName;
+    if(companyName=="公司名称不能为空"){
+      posNewPage.setData({companyName:''});
     }
   },
-  checkContactName:function(){
-    let contactName=proOutSouPage.data.contactName;
-    if(contactName==""||contactName==null||contactName=="姓名不能为空"){
-      proOutSouPage.setData({contactName:'姓名不能为空'});
+  checkCompanyName:function(){
+    let companyName=posNewPage.data.companyName;
+    if(companyName==""||companyName==null||companyName=="公司名称不能为空"){
+      posNewPage.setData({companyName:'公司名称不能为空'});
       return false;
     }
     else{
       return true;
     }
   },
-  focusPhone:function(){
-    let phone=proOutSouPage.data.phone;
-    if(phone=="联系方式不能为空"){
-      proOutSouPage.setData({phone:''});
+  checkTradeId:function(){
+    let tradeSelectId=posNewPage.data.tradeSelectId;
+    if(tradeSelectId==null||tradeSelectId==""){
+      wx.showToast({
+        title: "请选择行业",
+      })
+	  	return false;
+    }
+    else
+      return true;
+  },
+  focusOtherTrade:function(){
+    let otherTrade=posNewPage.data.otherTrade;
+    if(otherTrade=="其他行业不能为空"){
+      posNewPage.setData({otherTrade:''});
     }
   },
-  checkPhone:function(){
-    let phone=proOutSouPage.data.phone;
-    console.log(phone)
-    if(phone==""||phone==null||phone=="联系方式不能为空"){
-      proOutSouPage.setData({phone:'联系方式不能为空'});
+  checkOtherTrade:function(){
+    let otherTrade=posNewPage.data.otherTrade;
+    console.log(otherTrade)
+    if(otherTrade==""||otherTrade==null||otherTrade=="其他行业不能为空"){
+      posNewPage.setData({otherTrade:'其他行业不能为空'});
       return false;
     }
     else{
       return true;
     }
   },
-  focusArea:function(){
-    let area=proOutSouPage.data.area;
-    if(area=="地区不能为空"){
-      proOutSouPage.setData({area:''});
+  focusPost:function(){
+    let post=posNewPage.data.post;
+    if(post=="岗位名称不能为空"){
+      posNewPage.setData({post:''});
     }
   },
-  checkArea:function(){
-    let area=proOutSouPage.data.area;
-    console.log(area)
-    if(area==""||area==null||area=="地区不能为空"){
-      proOutSouPage.setData({area:'地区不能为空'});
+  checkPost:function(){
+    let post=posNewPage.data.post;
+    console.log(post)
+    if(post==""||post==null||post=="岗位名称不能为空"){
+      posNewPage.setData({post:'岗位名称不能为空'});
       return false;
     }
     else{
@@ -250,7 +269,7 @@ Page({
     }
   },
   checkProCount:function(){
-    let proCount=proOutSouPage.data.proCount;
+    let proCount=posNewPage.data.proCount;
     console.log(proCount)
     if(proCount==""||proCount==null){
       wx.showToast({
@@ -262,44 +281,16 @@ Page({
       return true;
     }
   },
-  checkTradeId:function(){
-    let tradeSelectId=proOutSouPage.data.tradeSelectId;
-    if(tradeSelectId==null||tradeSelectId==""){
-      wx.showToast({
-        title: "请选择行业",
-      })
-	  	return false;
-    }
-    else
-      return true;
-  },
-  focusOtherTrade:function(){
-    let otherTrade=proOutSouPage.data.otherTrade;
-    if(otherTrade=="其他行业不能为空"){
-      proOutSouPage.setData({otherTrade:''});
-    }
-  },
-  checkOtherTrade:function(){
-    let otherTrade=proOutSouPage.data.otherTrade;
-    console.log(otherTrade)
-    if(otherTrade==""||otherTrade==null||otherTrade=="其他行业不能为空"){
-      proOutSouPage.setData({otherTrade:'其他行业不能为空'});
-      return false;
-    }
-    else{
-      return true;
-    }
-  },
   focusSpeciality:function(){
-    let speciality=proOutSouPage.data.speciality;
+    let speciality=posNewPage.data.speciality;
     if(speciality=="特长不能为空"){
-      proOutSouPage.setData({speciality:''});
+      posNewPage.setData({speciality:''});
     }
   },
   checkSpeciality:function(){
-    let speciality=proOutSouPage.data.speciality;
+    let speciality=posNewPage.data.speciality;
     if(speciality==""||speciality==null||speciality=="特长不能为空"){
-      proOutSouPage.setData({speciality:'特长不能为空'});
+      posNewPage.setData({speciality:'特长不能为空'});
       return false;
     }
     else{
@@ -307,18 +298,18 @@ Page({
     }
   },
   focusDescribe:function(){
-    let describe=proOutSouPage.data.describe;
+    let describe=posNewPage.data.describe;
     if(describe=="描述不能为空"){
-      proOutSouPage.setData({describePlaceholder:'请填写描述'});
-      proOutSouPage.setData({describe:''});
+      posNewPage.setData({describePlaceholder:'请填写描述'});
+      posNewPage.setData({describe:''});
     }
   },
   checkDescribe:function(){
-    let describe=proOutSouPage.data.describe;
+    let describe=posNewPage.data.describe;
     console.log(describe)
     if(describe==""||describe==null||describe=="描述不能为空"){
-      proOutSouPage.setData({describePlaceholder:''});
-      proOutSouPage.setData({describe:'描述不能为空'});
+      posNewPage.setData({describePlaceholder:''});
+      posNewPage.setData({describe:'描述不能为空'});
       return false;
     }
     else{
@@ -326,7 +317,7 @@ Page({
     }
   },
   checkStartDate:function(){
-    let startDate=proOutSouPage.data.startDate;
+    let startDate=posNewPage.data.startDate;
     if(startDate==null||startDate==""){
         wx.showToast({
           title: "请选择开始日期",
@@ -337,7 +328,7 @@ Page({
       return true;
   },
   checkEndDate:function(){
-    let endDate=proOutSouPage.data.endDate;
+    let endDate=posNewPage.data.endDate;
     if(endDate==null||endDate==""){
         wx.showToast({
           title: "请选择结束日期",
@@ -347,28 +338,61 @@ Page({
     else
       return true;
   },
+  focusContactName:function(){
+    let contactName=posNewPage.data.contactName;
+    if(contactName=="姓名不能为空"){
+      posNewPage.setData({contactName:''});
+    }
+  },
+  checkContactName:function(){
+    let contactName=posNewPage.data.contactName;
+    if(contactName==""||contactName==null||contactName=="姓名不能为空"){
+      posNewPage.setData({contactName:'姓名不能为空'});
+      return false;
+    }
+    else{
+      return true;
+    }
+  },
+  focusPhone:function(){
+    let phone=posNewPage.data.phone;
+    if(phone=="联系方式不能为空"){
+      posNewPage.setData({phone:''});
+    }
+  },
+  checkPhone:function(){
+    let phone=posNewPage.data.phone;
+    console.log(phone)
+    if(phone==""||phone==null||phone=="联系方式不能为空"){
+      posNewPage.setData({phone:'联系方式不能为空'});
+      return false;
+    }
+    else{
+      return true;
+    }
+  },
   pickerStartDateChange:function(e){
     let value = e.detail.value;
     console.log(value)
-    proOutSouPage.setData({startDate:value});
+    posNewPage.setData({startDate:value});
   },
   pickerStartDateCancel:function(){
-    proOutSouPage.setData({startDate:''});
+    posNewPage.setData({startDate:''});
   },
   pickerEndDateChange:function(e){
     let value = e.detail.value;
     console.log(value)
-    proOutSouPage.setData({endDate:value});
+    posNewPage.setData({endDate:value});
   },
   pickerEndDateCancel:function(){
-    proOutSouPage.setData({endDate:''});
+    posNewPage.setData({endDate:''});
   },
   saving:function(flag){
     if(flag){
-      proOutSouPage.setData({showSubmitBut:false,showSubmitingBut:true});
+      posNewPage.setData({showSubmitBut:false,showSubmitingBut:true});
     }
     else{
-      proOutSouPage.setData({showSubmitingBut:false,showSubmitedBut:true});
+      posNewPage.setData({showSubmitingBut:false,showSubmitedBut:true});
     }
   },
   goSubSucPage:function(){
