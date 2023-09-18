@@ -1,7 +1,7 @@
 <!--pages/outSouMana/proOutSou/edit.wxml-->
 <view class="main_v">
   <view class="title_v">提供外包</view>
-  <view class="back_but_v" catchtap="goPage">{{backButSign}}</view>
+  <view class="back_but_v" data-pageflag="{{listPageFlag}}" catchtap="goPage">{{backButSign}}</view>
   <view class="thanks_tit_v">您好，感谢您使用工程外包平台</view>
   <view class="thanks_cont_v">如果您想成为代理商，请您填写以下内容。我们将会在1-3个工作日内联系您。</view>
   <view class="companyName_v">

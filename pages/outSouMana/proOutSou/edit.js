@@ -438,9 +438,17 @@ Page({
       url: '/pages/subSuc/subSuc',
     })
   },
-  goPage:function(){
+  goPage:function(e){
+    let pageFlag=e.currentTarget.dataset.pageflag;
+    let url="/pages/";
+    console.log(pageFlag)
+    switch (pageFlag) {
+      case posEditPage.data.listPageFlag:
+        url+='outSouMana/proOutSou/list';
+        break;
+    }
     wx.redirectTo({
-      url: '/pages/outSouMana/proOutSou/list',
+      url: url,
     })
   }
 })

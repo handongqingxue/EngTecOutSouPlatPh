@@ -1,0 +1,94 @@
+/* pages/outSouMana/proOutSou/detail.wxss */
+.main_v{
+  width: 100%;
+  background-color: #F8F8F8;
+}
+.main_v .title_v{
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #F8F8F8;
+}
+.main_v .back_but_v{
+  height: 40px;
+  line-height: 40px;
+  margin-top: -40px;
+  margin-left: 10px;
+}
+.main_v .thanks_tit_v{
+  width: 90%;
+  height: 30px;
+  line-height: 30px;
+  margin: auto;
+  font-weight: bold;
+}
+.main_v .thanks_cont_v{
+  width: 90%;
+  height: 40px;
+  line-height: 20px;
+  margin: auto;
+  font-size: 13px;
+}
+.main_v .companyName_v,
+.main_v .trade_v,
+.main_v .otherTrade_v,
+.main_v .post_v,
+.main_v .needCount_v,
+.main_v .speciality_v,
+.main_v .contactName_v,
+.main_v .phone_v{
+  width: 100%;
+  height: 85px;
+  margin:10px auto;
+  background-color: #FFF;
+  padding-top: 1px;
+}
+.main_v .describe_v{
+  width: 100%;
+  height: 165px;
+  margin:10px auto;
+  background-color: #FFF;
+  padding-top: 1px;
+}
+.main_v .startDate_v,
+.main_v .endDate_v{
+  width: 100%;
+  height: 90px;
+  margin:10px auto;
+  background-color: #FFF;
+  padding-top: 1px;
+}
+.main_v .companyName_v .tit_v,
+.main_v .trade_v .tit_v,
+.main_v .otherTrade_v .tit_v,
+.main_v .post_v .tit_v,
+.main_v .needCount_v .tit_v,
+.main_v .speciality_v .tit_v,
+.main_v .describe_v .tit_v,
+.main_v .startDate_v .tit_v,
+.main_v .endDate_v .tit_v,
+.main_v .contactName_v .tit_v,
+.main_v .phone_v .tit_v{
+  width: 90%;
+  margin:10px auto 0;
+}
+.main_v .companyName_v .val_v,
+.main_v .trade_v .val_v,
+.main_v .otherTrade_v .val_v,
+.main_v .post_v .val_v,
+.main_v .needCount_v .val_v,
+.main_v .speciality_v .val_v,
+.main_v .startDate_v .picker_v,
+.main_v .endDate_v .picker_v,
+.main_v .contactName_v .val_v,
+.main_v .phone_v .val_v{
+  width: 90%;
+  margin:10px auto 0;
+}
+.main_v .describe_v .ta_v{
+  width: 90%;
+  margin:10px auto 0;
+}

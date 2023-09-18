@@ -9,6 +9,7 @@ Page({
    */
   data: {
     backButSign:'<',
+    listPageFlag:1,
   },
 
   /**
@@ -17,8 +18,8 @@ Page({
   onLoad(options) {
     nosDetailPage=this;
     rootIP=getApp().getRootIP();
-    //let id=options.id;
-    let id=10;
+    let id=options.id;
+    //let id=10;
     console.log(id);
     nosDetailPage.setData({id:id});
   },
@@ -106,9 +107,17 @@ Page({
       }
     })
   },
-  goPage:function(){
+  goPage:function(e){
+    let pageFlag=e.currentTarget.dataset.pageflag;
+    let url="/pages/";
+    console.log(pageFlag)
+    switch (pageFlag) {
+      case nosDetailPage.data.listPageFlag:
+        url+='outSouMana/needOutSou/list';
+        break;
+    }
     wx.redirectTo({
-      url: '/pages/outSouMana/needOutSou/list',
+      url: url,
     })
   }
 })

@@ -12,7 +12,8 @@
     "pages/outSouMana/proOutSou/list",
     "pages/outSouMana/needOutSou/edit",
     "pages/outSouMana/proOutSou/edit",
-    "pages/outSouMana/needOutSou/detail"
+    "pages/outSouMana/needOutSou/detail",
+    "pages/outSouMana/proOutSou/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

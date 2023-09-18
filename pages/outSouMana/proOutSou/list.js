@@ -108,6 +108,7 @@ Page({
     })
   },
   goPage:function(e){
+    let id=e.currentTarget.dataset.id;
     let pageFlag=e.currentTarget.dataset.pageflag;
     let url="/pages/";
     console.log(pageFlag)
@@ -116,10 +117,9 @@ Page({
         url+='outSouMana/select';
         break;
       case listPage.data.detailPageFlag:
-        url+='outSouMana/proOutSou/detail';
+        url+='outSouMana/proOutSou/detail?id='+id;
         break;
       case listPage.data.editPageFlag:
-        let id=e.currentTarget.dataset.id;
         url+='outSouMana/proOutSou/edit?id='+id;
         break;
     }
