@@ -1,5 +1,6 @@
 // app.js
-var rootIP = "http://localhost:8080/EngTecOutSouPlat/phone/";
+//var rootIP = "http://localhost:8080/EngTecOutSouPlat/phone/";
+var rootIP = "https://www.qrcodesy.com/EngTecOutSouPlat/phone/";
 
 App({
   onLaunch() {
