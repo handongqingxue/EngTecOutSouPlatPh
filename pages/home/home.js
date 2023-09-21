@@ -78,6 +78,7 @@ Page({
         console.log("code="+res.code)
         if (res.code) { // 发送 res.code 到后台换取 openId, sessionKey, unionId
           wx.request({
+            /*
             url: 'https://api.weixin.qq.com/sns/jscode2session',
             data: {
               appid: 'wxa81e31805c520754',
@@ -85,12 +86,18 @@ Page({
               js_code: res.code,
               grant_type: 'authorization_code'
             },
+            */
+            url: rootIP+"jscode2session",
+            data: {jsCode:res.code,grantType:'authorization_code'},
             success:function(res) {
               console.log(res)
-              const openid = res.data.openid; // 用户的openid
-              const sessionKey = res.data.session_key; // 会话密钥
-              console.log(openid, sessionKey);
-              home.setData({openId:openid});
+              //const openid = res.data.openid; // 用户的openid
+              //const sessionKey = res.data.session_key; // 会话密钥
+              //console.log(openid, sessionKey);
+              const openId = res.data.openId; // 用户的openid
+              const sessionKey = res.data.sessionKey; // 会话密钥
+              console.log(openId, sessionKey);
+              home.setData({openId:openId});
               home.getUserInfo();
             }
           })
