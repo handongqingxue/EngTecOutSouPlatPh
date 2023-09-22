@@ -1,7 +1,7 @@
 <!--pages/comLogin/comLogin.wxml-->
 <view class="main_v">
   <view class="title_v">公司登录</view>
-  <view class="back_but_v" catchtap="goHomePage">{{backButSign}}</view>
+  <view class="back_but_v" data-pageflag="{{homePageFlag}}" catchtap="goPage">{{backButSign}}</view>
   <view class="add_v" wx:if="{{showAddV}}">
     <view class="name_v">
       <view class="tit_v">公司名</view>
@@ -12,11 +12,11 @@
     <view class="trade_v">
       <view class="tit_v">行业</view>
       <view class="select_v">
-        <view class='selected_text_v' catchtap='addVShowTradeOption'>{{tradeList[addVTradeSelectIndex]==null?'请选择':tradeList[addVTradeSelectIndex].text}}</view>
+        <view class='selected_text_v' catchtap='addVShowTradeOption'>{{tradeList[addVTradeSelectIndex]==null?'请选择':tradeList[addVTradeSelectIndex].name}}</view>
           <image class='select_img {{addVShowTradeOption&&"select_img_rotate"}}' src='../../images/sanjiao.png'></image>
       </view>
       <view class='trade_option_list_v' style='height:{{addVShowTradeOption?(tradeList.length>5?300:tradeList.length*30):0}}px;'>
-        <view class='item_v' wx:for="{{tradeList}}" data-index="{{index}}" catchtap='addVSelectTradeOption'>{{item.text}}</view>
+        <view class='item_v' wx:for="{{tradeList}}" data-index="{{index}}" catchtap='addVSelectTradeOption'>{{item.name}}</view>
       </view>
     </view>
     <view class="contactName_v">
@@ -60,7 +60,7 @@
       <view class="val_v">{{detailVPhone}}</view>
     </view>
     <view class="show_edit_v_but_v" data-flag="{{true}}" catchtap="showEditV">编辑</view>
-    <view class="osm_but_v" catchtap="goOSMPage">外包管理</view>
+    <view class="osm_but_v" catchtap="goPage" data-pageflag="{{osmPageFlag}}">外包管理</view>
   </view>
   <view class="edit_v" wx:if="{{showEditV}}">
     <view class="name_v">
@@ -72,11 +72,11 @@
     <view class="trade_v">
       <view class="tit_v">行业</view>
       <view class="select_v">
-        <view class='selected_text_v' catchtap='editVShowTradeOption'>{{tradeList[editVTradeSelectIndex]==null?'请选择':tradeList[editVTradeSelectIndex].text}}</view>
+        <view class='selected_text_v' catchtap='editVShowTradeOption'>{{tradeList[editVTradeSelectIndex]==null?'请选择':tradeList[editVTradeSelectIndex].name}}</view>
           <image class='select_img {{editVShowTradeOption&&"select_img_rotate"}}' src='../../images/sanjiao.png'></image>
       </view>
       <view class='trade_option_list_v' style='height:{{editVShowTradeOption?(tradeList.length>5?300:tradeList.length*30):0}}px;'>
-        <view class='item_v' wx:for="{{tradeList}}" data-index="{{index}}" catchtap='editVSelectTradeOption'>{{item.text}}</view>
+        <view class='item_v' wx:for="{{tradeList}}" data-index="{{index}}" catchtap='editVSelectTradeOption'>{{item.name}}</view>
       </view>
     </view>
     <view class="contactName_v">

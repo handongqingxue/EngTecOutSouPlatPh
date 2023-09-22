@@ -9,18 +9,10 @@ Page({
    */
   data: {
     backButSign:'<',
+    homePageFlag:1,
+    osmPageFlag:2,
+    ssPageFlag:3,
     addVShowTradeOption:false,
-    tradeList:[
-      {value:"",text:"请选择"},
-      {value:"1",text:"工业自动化系统集成"},
-      {value:"2",text:"环保工程"},
-      {value:"3",text:"设备制造"},
-      {value:"4",text:"监控安装"},
-      {value:"5",text:"工业软件"},
-      {value:"6",text:"化工行业"},
-      {value:"7",text:"电厂锅炉"},
-      {value:"8",text:"新能源新材料"}
-    ],
     showAddV:false,
     showDetailV:false,
     showEditV:false,
@@ -132,10 +124,10 @@ Page({
     let index = e.currentTarget.dataset.index; //获取点击的下拉列表的下标
     let tradeList=comLoginPage.data.tradeList;
     let trade=tradeList[index];
-    console.log(index+","+trade.value+","+trade.text);
+    console.log(index+","+trade.id+","+trade.name);
     comLoginPage.setData({
       addVTradeSelectIndex: index,
-      addVTradeSelectId: trade.value,
+      addVTradeSelectId: trade.id,
       addVShowTradeOption: !comLoginPage.data.addVShowTradeOption
     });
   },
@@ -143,10 +135,10 @@ Page({
     let index = e.currentTarget.dataset.index; //获取点击的下拉列表的下标
     let tradeList=comLoginPage.data.tradeList;
     let trade=tradeList[index];
-    console.log(index+","+trade.value+","+trade.text);
+    console.log(index+","+trade.id+","+trade.name);
     comLoginPage.setData({
       editVTradeSelectIndex: index,
-      editVTradeSelectId: trade.value,
+      editVTradeSelectId: trade.id,
       editVShowTradeOption: !comLoginPage.data.editVShowTradeOption
     });
   },
@@ -346,7 +338,9 @@ Page({
             title: data.info,
           })
           setTimeout(() => {
-            comLoginPage.goSubSucPage();
+            let ssPageFlag=comLoginPage.data.ssPageFlag;
+            var e={currentTarget:{dataset:{pageflag:ssPageFlag}}};
+            comLoginPage.goPage(e);
           }, 1000);
         }
         else{
@@ -387,7 +381,9 @@ Page({
             title: data.info,
           })
           setTimeout(() => {
-            comLoginPage.goSubSucPage();
+            let ssPageFlag=comLoginPage.data.ssPageFlag;
+            var e={currentTarget:{dataset:{pageflag:ssPageFlag}}};
+            comLoginPage.goPage(e);
           }, 1000);
         }
         else{
@@ -431,23 +427,10 @@ Page({
         let tradeId=company.tradeId;
         let contactName=company.contactName;
         let phone=company.phone;
-        let tradeSelectIndex=comLoginPage.getTradeIndexInListById(tradeId);
+        let tradeSelectIndex=getApp().getTradeIndexInListById(comLoginPage,tradeId);
         comLoginPage.setData({detailVName:name,detailVTradeId:tradeId,detailVContactName:contactName,detailVPhone:phone,editVName:name,editVTradeId:tradeId,editVTradeSelectId:tradeId,editVTradeSelectIndex:tradeSelectIndex,editVContactName:contactName,editVPhone:phone});
       }
     })
-  },
-  getTradeIndexInListById:function(tradeId){
-    let tradeSelectIndex;
-    let tradeList=comLoginPage.data.tradeList;
-    //console.log(tradeList)
-    for(let i=0;i<tradeList.length;i++){
-      let trade=tradeList[i];
-      if(tradeId==trade.value){
-        tradeSelectIndex=i;
-        break;
-      }
-    }
-    return tradeSelectIndex;
   },
   showEditV:function(e){
     let flag = e.currentTarget.dataset.flag;
@@ -458,19 +441,23 @@ Page({
 
     }
   },
-  goSubSucPage:function(){
+  goPage:function(e){
+    let pageFlag=e.currentTarget.dataset.pageflag;
+    let url="/pages/";
+    console.log(pageFlag)
+    switch (pageFlag) {
+      case comLoginPage.data.homePageFlag:
+        url+='home/home';
+        break;
+      case comLoginPage.data.osmPageFlag:
+        url+='outSouMana/select';
+        break;
+      case comLoginPage.data.ssPageFlag:
+        url+='subSuc/subSuc';
+        break;
+    }
     wx.redirectTo({
-      url: '/pages/subSuc/subSuc',
+      url: url,
     })
   },
-  goOSMPage:function(){
-    wx.redirectTo({
-      url: '/pages/outSouMana/select',
-    })
-  },
-  goHomePage:function(){
-    wx.redirectTo({
-      url: '/pages/home/home',
-    })
-  }
 })

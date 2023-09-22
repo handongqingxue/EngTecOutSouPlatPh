@@ -9,6 +9,8 @@ Page({
    */
   data: {
     backButSign:'<',
+    listPageFlag:1,
+    ssPageFlag:2,
     showTradeOption:false,
     startDate:'',
     endDate:'',
@@ -172,7 +174,9 @@ Page({
             title: data.info,
           })
           setTimeout(() => {
-            nosEditPage.goSubSucPage();
+            let ssPageFlag=nosEditPage.data.ssPageFlag;
+            var e={currentTarget:{dataset:{pageflag:ssPageFlag}}};
+            nosEditPage.goPage(e);
           }, 1000);
         }
         else{
@@ -454,11 +458,6 @@ Page({
       }
     })
   },
-  goSubSucPage:function(){
-    wx.redirectTo({
-      url: '/pages/subSuc/subSuc',
-    })
-  },
   goPage:function(e){
     let pageFlag=e.currentTarget.dataset.pageflag;
     let url="/pages/";
@@ -466,6 +465,9 @@ Page({
     switch (pageFlag) {
       case nosEditPage.data.listPageFlag:
         url+='outSouMana/needOutSou/list';
+        break;
+      case nosEditPage.data.ssPageFlag:
+        url+='subSuc/subSuc';
         break;
     }
     wx.redirectTo({

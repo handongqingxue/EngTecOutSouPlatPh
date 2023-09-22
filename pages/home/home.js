@@ -24,7 +24,16 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-    home.login();
+    let openId=wx.getStorageSync('openId');
+    console.log("openId==="+openId)
+    if(openId==""||openId==null||openId===undefined){
+      home.login();
+    }
+    else{
+      home.setData({openId:openId});
+      wx.setStorageSync('openId', openId);
+      home.getUserInfo();
+    }
   },
 
   /**
@@ -98,6 +107,7 @@ Page({
               const sessionKey = res.data.sessionKey; // 会话密钥
               console.log(openId, sessionKey);
               home.setData({openId:openId});
+              wx.setStorageSync('openId', openId);
               home.getUserInfo();
             }
           })
