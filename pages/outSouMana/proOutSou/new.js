@@ -9,6 +9,8 @@ Page({
    */
   data: {
     backButSign:'<',
+    homePageFlag:1,
+    ssPageFlag:2,
     showTradeOption:false,
     startDate:'',
     endDate:'',
@@ -34,6 +36,7 @@ Page({
   onReady() {
     wxUser=wx.getStorageSync("wxUser");
     getApp().getTradeList(posNewPage);
+    posNewPage.getComInfo();
   },
 
   /**
@@ -162,7 +165,9 @@ Page({
             title: data.info,
           })
           setTimeout(() => {
-            posNewPage.goSubSucPage();
+            let ssPageFlag=posNewPage.data.ssPageFlag;
+            var e={currentTarget:{dataset:{pageflag:ssPageFlag}}};
+            posNewPage.goPage(e);
           }, 1000);
         }
         else{
@@ -395,14 +400,42 @@ Page({
       posNewPage.setData({showSubmitingBut:false,showSubmitedBut:true});
     }
   },
-  goSubSucPage:function(){
-    wx.redirectTo({
-      url: '/pages/subSuc/subSuc',
+  getComInfo:function(){
+    let openId=wxUser.openId;
+    wx.request({
+      url: rootIP+"getCompanyByOpenId",
+      method: 'POST',
+      data: { openId:openId},
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      success: function (res) {
+        console.log(res);
+        let data=res.data;
+        let company=data.company;
+        let name=company.name;
+        let tradeId=company.tradeId;
+        let contactName=company.contactName;
+        let phone=company.phone;
+        let tradeSelectIndex=getApp().getTradeIndexInListById(posNewPage,tradeId);
+        posNewPage.setData({companyName:name,tradeSelectId:tradeId,tradeSelectIndex:tradeSelectIndex,contactName:contactName,phone:phone});
+      }
     })
   },
-  goHomePage:function(){
+  goPage:function(e){
+    let pageFlag=e.currentTarget.dataset.pageflag;
+    let url="/pages/";
+    console.log(pageFlag)
+    switch (pageFlag) {
+      case posNewPage.data.homePageFlag:
+        url+='home/home';
+        break;
+      case posNewPage.data.ssPageFlag:
+        url+='subSuc/subSuc';
+        break;
+    }
     wx.redirectTo({
-      url: '/pages/home/home',
+      url: url,
     })
   }
 })
