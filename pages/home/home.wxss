@@ -1,9 +1,17 @@
 /* pages/home/home.wxss */
 .main_v{
   width:100%;
-  height:500px;
+  height:100%;
   margin: auto;
   background-color: #f7f7f7;
+  /*
+  background-color: red;
+  */
+  position: fixed;
+}
+.logo_v{
+  width:100%;
+  text-align: center;
 }
 .main_v .but_list_v{
   width: 95%;
@@ -28,9 +36,14 @@
   margin-top:-80px;
   margin-left:66%;
 }
-.main_v .but_list_v .but_v .but_img{
+.main_v .but_list_v .nos_but_v .but_img,
+.main_v .but_list_v .cl_but_v .but_img{
   width:80px;
   height:50px;
+}
+.main_v .but_list_v .pos_but_v .but_img{
+  width: 56px;
+  height: 50px;
 }
 .main_v .but_list_v .but_v .but_text{
   font-size: 12px;
