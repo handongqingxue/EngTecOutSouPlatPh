@@ -1,6 +1,8 @@
 /* pages/proOutSou/proOutSou.wxss */
 .main_v{
   width: 100%;
+  background-color: #F8F8F8;
+  padding-bottom: 1px;
 }
 .main_v .title_v{
   width: 100%;
@@ -129,7 +131,9 @@
   height: 30px;
   line-height: 30px;
   padding-left: 10px;
+  /*
   background-color: #0f0;
+  */
 }
 .main_v .describe_v .ta_v textarea{
   width: 90%;
@@ -150,8 +154,8 @@
 .main_v .submiting_but_v,
 .main_v .submited_but_v{
   width: 80%;
-  height: 30px;
-  line-height: 30px;
+  height: 40px;
+  line-height: 40px;
   margin: 20px auto;
   color: #FFF;
   text-align: center;

@@ -1,6 +1,7 @@
 /* pages/outSouMana/select.wxss */
 .main_v{
   width: 100%;
+  min-height: 100vh;
   background-color: #F8F8F8;
 }
 .main_v .title_v{
@@ -26,8 +27,8 @@
 .main_v .nos_but_v,
 .main_v .pos_but_v{
   width: 80%;
-  height: 30px;
-  line-height: 30px;
+  height: 40px;
+  line-height: 40px;
   margin: 30px auto;
   color: #FFF;
   text-align: center;

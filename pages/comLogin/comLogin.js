@@ -96,6 +96,7 @@ Page({
       success: function (res) {
         let data=res.data;
         let exist=data.exist;
+        //exist=false;
         console.log("exist==="+exist)
         if(exist){
           comLoginPage.setData({showDetailV:true});

@@ -108,13 +108,11 @@ Page({
           if(nosEditPage.checkEnginName()){
             if(nosEditPage.checkNeedCount()){
               if(nosEditPage.checkSpeciality()){
-                if(nosEditPage.checkDescribe()){
-                  if(nosEditPage.checkStartDate()){
-                    if(nosEditPage.checkEndDate()){
-                      if(nosEditPage.checkContactName()){
-                        if(nosEditPage.checkPhone()){
-                          nosEditPage.editNeedOutSou();
-                        }
+                if(nosEditPage.checkStartDate()){
+                  if(nosEditPage.checkEndDate()){
+                    if(nosEditPage.checkContactName()){
+                      if(nosEditPage.checkPhone()){
+                        nosEditPage.editNeedOutSou();
                       }
                     }
                   }
@@ -323,25 +321,6 @@ Page({
     console.log(speciality)
     if(speciality==""||speciality==null||speciality=="特长不能为空"){
       nosEditPage.setData({speciality:'特长不能为空'});
-      return false;
-    }
-    else{
-      return true;
-    }
-  },
-  focusDescribe:function(){
-    let describe=nosEditPage.data.describe;
-    if(describe=="描述不能为空"){
-      nosEditPage.setData({describePlaceholder:'请填写描述'});
-      nosEditPage.setData({describe:''});
-    }
-  },
-  checkDescribe:function(){
-    let describe=nosEditPage.data.describe;
-    console.log(describe)
-    if(describe==""||describe==null||describe=="描述不能为空"){
-      nosEditPage.setData({describePlaceholder:''});
-      nosEditPage.setData({describe:'描述不能为空'});
       return false;
     }
     else{

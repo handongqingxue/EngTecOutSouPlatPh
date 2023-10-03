@@ -28,8 +28,11 @@
     <view class="content_div">
       <view class="paragraphs_v">欢迎使用工程技术人才外包小程序，使用前请阅读使用须知，如下：</view>
       <view class="paragraphs_v">1.若您还未填写公司信息，请在公司登录里填写完整相关的公司信息。</view>
-      <view class="paragraphs_v">2.若公司需要别公司派遣人员到现场施工，请在需要外包里填写相关信息，我公司将尽快为您提供优质的技术人员。</view>
-      <view class="paragraphs_v">3.若公司有空闲的技术人员待派遣到别的现场施工，请在提供外包里填写相关信息，我公司将尽快为您联系合适的项目现场。</view>
+      <view class="paragraphs_v">2.若公司信息需要变更，请在公司登录-编辑里填写变更信息。</view>
+      <view class="paragraphs_v">3.若公司需要别公司派遣人员到现场施工，请在需要外包里填写相关信息，我公司将尽快为您提供优质的技术人员。</view>
+      <view class="paragraphs_v">4.若之前填写的需要外包信息需要变更，请在公司登录-外包管理处选择需要外包，来到需要外包列表。点编辑，填写最新的外包信息。</view>
+      <view class="paragraphs_v">5.若公司有空闲的技术人员待派遣到别的现场施工，请在提供外包里填写相关信息，我公司将尽快为您联系合适的项目现场。</view>
+      <view class="paragraphs_v">6.若之前填写的提供外包信息需要变更，请在公司登录-外包管理处选择提供外包，来到提供外包列表。点编辑，填写最新的外包信息。</view>
     </view>
   </view>
 </view>

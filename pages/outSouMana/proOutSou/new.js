@@ -104,13 +104,11 @@ Page({
         if(posNewPage.checkPost()){
           if(posNewPage.checkProCount()){
             if(posNewPage.checkSpeciality()){
-              if(posNewPage.checkDescribe()){
-                if(posNewPage.checkStartDate()){
-                  if(posNewPage.checkEndDate()){
-                    if(posNewPage.checkContactName()){
-                      if(posNewPage.checkPhone()){
-                        posNewPage.newProOutSou();
-                      }
+              if(posNewPage.checkStartDate()){
+                if(posNewPage.checkEndDate()){
+                  if(posNewPage.checkContactName()){
+                    if(posNewPage.checkPhone()){
+                      posNewPage.newProOutSou();
                     }
                   }
                 }
@@ -296,25 +294,6 @@ Page({
     let speciality=posNewPage.data.speciality;
     if(speciality==""||speciality==null||speciality=="特长不能为空"){
       posNewPage.setData({speciality:'特长不能为空'});
-      return false;
-    }
-    else{
-      return true;
-    }
-  },
-  focusDescribe:function(){
-    let describe=posNewPage.data.describe;
-    if(describe=="描述不能为空"){
-      posNewPage.setData({describePlaceholder:'请填写描述'});
-      posNewPage.setData({describe:''});
-    }
-  },
-  checkDescribe:function(){
-    let describe=posNewPage.data.describe;
-    console.log(describe)
-    if(describe==""||describe==null||describe=="描述不能为空"){
-      posNewPage.setData({describePlaceholder:''});
-      posNewPage.setData({describe:'描述不能为空'});
       return false;
     }
     else{

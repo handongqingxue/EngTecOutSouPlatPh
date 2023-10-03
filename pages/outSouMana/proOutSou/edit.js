@@ -105,13 +105,11 @@ Page({
         if(posEditPage.checkPost()){
           if(posEditPage.checkProCount()){
             if(posEditPage.checkSpeciality()){
-              if(posEditPage.checkDescribe()){
-                if(posEditPage.checkStartDate()){
-                  if(posEditPage.checkEndDate()){
-                    if(posEditPage.checkContactName()){
-                      if(posEditPage.checkPhone()){
-                        posEditPage.editproOutSou();
-                      }
+              if(posEditPage.checkStartDate()){
+                if(posEditPage.checkEndDate()){
+                  if(posEditPage.checkContactName()){
+                    if(posEditPage.checkPhone()){
+                      posEditPage.editproOutSou();
                     }
                   }
                 }
@@ -299,25 +297,6 @@ Page({
     console.log(speciality)
     if(speciality==""||speciality==null||speciality=="特长不能为空"){
       posEditPage.setData({speciality:'特长不能为空'});
-      return false;
-    }
-    else{
-      return true;
-    }
-  },
-  focusDescribe:function(){
-    let describe=posEditPage.data.describe;
-    if(describe=="描述不能为空"){
-      posEditPage.setData({describePlaceholder:'请填写描述'});
-      posEditPage.setData({describe:''});
-    }
-  },
-  checkDescribe:function(){
-    let describe=posEditPage.data.describe;
-    console.log(describe)
-    if(describe==""||describe==null||describe=="描述不能为空"){
-      posEditPage.setData({describePlaceholder:''});
-      posEditPage.setData({describe:'描述不能为空'});
       return false;
     }
     else{

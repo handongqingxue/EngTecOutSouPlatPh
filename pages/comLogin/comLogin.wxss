@@ -1,6 +1,7 @@
 /* pages/comLogin/comLogin.wxss */
 .main_v{
   width: 100%;
+  min-height: 100vh;
   background-color: #F8F8F8;
 }
 .main_v .title_v{
@@ -109,7 +110,9 @@
   height: 30px;
   line-height: 30px;
   padding-left: 10px;
+  /*
   background-color: #0f0;
+  */
 }
 .main_v .add_v .submit_but_v,
 .main_v .add_v .submiting_but_v,
@@ -120,8 +123,8 @@
 .main_v .edit_v .submiting_but_v,
 .main_v .edit_v .submited_but_v{
   width: 80%;
-  height: 30px;
-  line-height: 30px;
+  height: 40px;
+  line-height: 40px;
   margin: 20px auto;
   color: #FFF;
   text-align: center;
